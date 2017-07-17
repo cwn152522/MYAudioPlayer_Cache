@@ -22,9 +22,9 @@
 - (void)viewDidLoad {
     [super viewDidLoad];
     self.player.playListArray = @[
-                                      [NSURL URLWithString:@"http://fjdx.sc.chinaz.com/Files/DownLoad/sound1/201707/8927.mp3"],
+                                       [NSURL URLWithString:@"http://download.lingyongqian.cn/music/AdagioSostenuto.mp3"],
                                       [NSURL URLWithString:@"http://fjdx.sc.chinaz.com/Files/DownLoad/sound1/201707/8930.mp3"],
-                                      [NSURL URLWithString:@"http://download.lingyongqian.cn/music/AdagioSostenuto.mp3"],
+                                     [NSURL URLWithString:@"http://fjdx.sc.chinaz.com/Files/DownLoad/sound1/201707/8927.mp3"],
                                   ];//设置播放列表
     // Do any additional setup after loading the view, typically from a nib.
 }

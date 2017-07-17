@@ -66,7 +66,7 @@
 - (void)addLoadingRequest:(AVAssetResourceLoadingRequest *)loadingRequest {
     //TODO: 新增缓冲任务
     [self.requestList addObject:loadingRequest];
-    @synchronized(self) {
+    
         if (self.requestTask) {//说明拖拽过
             if (loadingRequest.dataRequest.requestedOffset >= self.requestTask.requestOffset &&
                 loadingRequest.dataRequest.requestedOffset <= self.requestTask.requestOffset + self.requestTask.responseCacheLength) {
@@ -82,7 +82,6 @@
         }else {
             [self newTaskWithLoadingRequest:loadingRequest cache:YES];//第一次缓存，肯定是刚点了某一首音乐，我们开始缓存，并且需要本地化
         }
-    }
 }
 
 - (void)newTaskWithLoadingRequest:(AVAssetResourceLoadingRequest *)loadingRequest cache:(BOOL)cacheable {

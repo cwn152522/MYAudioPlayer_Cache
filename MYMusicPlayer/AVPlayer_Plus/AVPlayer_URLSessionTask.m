@@ -69,7 +69,7 @@
     
     [AVPlayer_CacheFileHandler writeTempFileData:data];//将data写入文本
     self.responseCacheLength += data.length;
-    NSLog(@"总字节数：%ld, 已缓存字节数：%ld，偏移量：%ld", self.responseCacheLength, self.fileLength, self.requestOffset);
+    NSLog(@"总字节数：%ld, 已缓存字节数：%ld，偏移量：%ld", self.fileLength, self.responseCacheLength, self.requestOffset);
     if (self.delegate && [self.delegate respondsToSelector:@selector(sessionTask:didUpdataPartOfCacheDatas:)]) {
         [self.delegate sessionTask:self didUpdataPartOfCacheDatas:[AVPlayer_CachePreference sharedPreference].tmpFilePath];
     }
