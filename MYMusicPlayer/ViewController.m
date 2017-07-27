@@ -22,8 +22,7 @@
 - (void)viewDidLoad {
     [super viewDidLoad];
     self.player.playListArray = @[
-                                      [NSURL URLWithString:@"http://192.168.0.149/aaa.mp4"],
-                                      [NSURL URLWithString:@"http://download.lingyongqian.cn/music/AdagioSostenuto.mp3"],
+                                       [NSURL URLWithString:@"http://download.lingyongqian.cn/music/AdagioSostenuto.mp3"],
                                       [NSURL URLWithString:@"http://fjdx.sc.chinaz.com/Files/DownLoad/sound1/201707/8930.mp3"],
                                      [NSURL URLWithString:@"http://fjdx.sc.chinaz.com/Files/DownLoad/sound1/201707/8927.mp3"],
                                   ];//设置播放列表
