@@ -29,6 +29,15 @@
     [self.requestTask cancel];
 }
 
+- (void)cacheUrl:(NSURL *)url{
+    self.requestTask = [[AVPlayer_URLSessionTask alloc]init];
+    self.requestTask.requestURL = url;
+    self.requestTask.requestOffset = 0;
+    self.requestTask.canCache = YES;
+    [self.requestTask start];
+    self.seekRequired = NO;
+}
+
 #pragma mark - 代理方法处理
 
 #pragma mark - AVAssetResourceLoaderDelegate

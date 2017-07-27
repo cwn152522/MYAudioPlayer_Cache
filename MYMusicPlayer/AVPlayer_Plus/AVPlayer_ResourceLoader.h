@@ -36,4 +36,12 @@
  */
 - (void)stopLoading;
 
+
+/**
+ 缓存某个音频url(整首缓存)，非AVAssetResourceLoaderDelegate代理方式
+ 
+ @param url 音频地址
+ */
+- (void)cacheUrl:(NSURL *)url;
+
 @end

@@ -22,10 +22,12 @@
 - (void)viewDidLoad {
     [super viewDidLoad];
     self.player.playListArray = @[
-                                       [NSURL URLWithString:@"http://download.lingyongqian.cn/music/AdagioSostenuto.mp3"],
+                                      [NSURL URLWithString:@"http://192.168.0.149/aaa.mp4"],
+                                      [NSURL URLWithString:@"http://download.lingyongqian.cn/music/AdagioSostenuto.mp3"],
                                       [NSURL URLWithString:@"http://fjdx.sc.chinaz.com/Files/DownLoad/sound1/201707/8930.mp3"],
                                      [NSURL URLWithString:@"http://fjdx.sc.chinaz.com/Files/DownLoad/sound1/201707/8927.mp3"],
                                   ];//设置播放列表
+    self.playBtn.userInteractionEnabled = NO;
     // Do any additional setup after loading the view, typically from a nib.
 }
 
@@ -40,8 +42,8 @@
 - (void)player:(AVPlayer_Plus *)player playerSateDidChanged:(AVPlayerStatus)playerStatus{
     //TODO: 获取当前播放器状态
     if(playerStatus == AVPlayerStatusReadyToPlay){
-//        [self onClickButton:_playBtn];//开始播放
-        //让播放器按钮正常响应事件
+        [self onClickButton:_playBtn];//开始播放
+        self.playBtn.userInteractionEnabled = YES;
     }
 }
 
@@ -105,7 +107,7 @@
 }
 
 - (IBAction)onSliderValueChanged:(UISlider *)sender {
-    self.resourceLoader.seekRequired = YES;
+//    self.resourceLoader.seekRequired = YES;
     [self.player seekToProgress:sender.value];
 }
 
