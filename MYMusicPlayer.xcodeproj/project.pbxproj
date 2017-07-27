@@ -7,6 +7,10 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		BE347B941F2A1118005994A9 /* bofang.png in Resources */ = {isa = PBXBuildFile; fileRef = BE347B931F2A1118005994A9 /* bofang.png */; };
+		BE347B951F2A116B005994A9 /* a.m4a in Sources */ = {isa = PBXBuildFile; fileRef = BE66E2EB1F14635100CCC706 /* a.m4a */; };
+		BE347B961F2A116B005994A9 /* Icon-58.png in Sources */ = {isa = PBXBuildFile; fileRef = BE66E2ED1F14D40D00CCC706 /* Icon-58.png */; };
+		BE347B971F2A116B005994A9 /* bofang.png in Sources */ = {isa = PBXBuildFile; fileRef = BE347B931F2A1118005994A9 /* bofang.png */; };
 		BE5C1E791F15C2FE009EC4DB /* AVPlayer_BaseViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = BE5C1E781F15C2FE009EC4DB /* AVPlayer_BaseViewController.m */; };
 		BE5C1E7F1F15C3C1009EC4DB /* AVPlayer_ResourceLoader.m in Sources */ = {isa = PBXBuildFile; fileRef = BE5C1E7E1F15C3C1009EC4DB /* AVPlayer_ResourceLoader.m */; };
 		BE5C1E821F15E30B009EC4DB /* AVPlayer_CachePreference.m in Sources */ = {isa = PBXBuildFile; fileRef = BE5C1E811F15E30B009EC4DB /* AVPlayer_CachePreference.m */; };
@@ -43,6 +47,7 @@
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXFileReference section */
+		BE347B931F2A1118005994A9 /* bofang.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = bofang.png; sourceTree = "<group>"; };
 		BE5C1E771F15C2FE009EC4DB /* AVPlayer_BaseViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = AVPlayer_BaseViewController.h; sourceTree = "<group>"; };
 		BE5C1E781F15C2FE009EC4DB /* AVPlayer_BaseViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = AVPlayer_BaseViewController.m; sourceTree = "<group>"; };
 		BE5C1E7D1F15C3C1009EC4DB /* AVPlayer_ResourceLoader.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = AVPlayer_ResourceLoader.h; sourceTree = "<group>"; };
@@ -134,6 +139,7 @@
 				BE66E2C61F145A3900CCC706 /* Info.plist */,
 				BE66E2EB1F14635100CCC706 /* a.m4a */,
 				BE66E2ED1F14D40D00CCC706 /* Icon-58.png */,
+				BE347B931F2A1118005994A9 /* bofang.png */,
 				BE66E2B51F145A3900CCC706 /* Supporting Files */,
 			);
 			path = MYMusicPlayer;
@@ -302,6 +308,7 @@
 				BE66E2C51F145A3900CCC706 /* LaunchScreen.storyboard in Resources */,
 				BE66E2C21F145A3900CCC706 /* Assets.xcassets in Resources */,
 				BE66E2C01F145A3900CCC706 /* Main.storyboard in Resources */,
+				BE347B941F2A1118005994A9 /* bofang.png in Resources */,
 				BE66E2EE1F14D40D00CCC706 /* Icon-58.png in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -327,6 +334,9 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				BE347B951F2A116B005994A9 /* a.m4a in Sources */,
+				BE347B961F2A116B005994A9 /* Icon-58.png in Sources */,
+				BE347B971F2A116B005994A9 /* bofang.png in Sources */,
 				BE5C1E881F15F661009EC4DB /* AVPlayer_URLSessionTask.m in Sources */,
 				BE66E2BD1F145A3900CCC706 /* ViewController.m in Sources */,
 				BE66E2F21F14DDB900CCC706 /* AVPlayer_Plus.m in Sources */,
