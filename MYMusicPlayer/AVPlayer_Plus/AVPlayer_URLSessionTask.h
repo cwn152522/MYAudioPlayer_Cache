@@ -18,7 +18,7 @@
 @required
 - (void)sessionTask:(AVPlayer_URLSessionTask *)task didUpdataPartOfCacheDatas:(NSString *)tmpFilePath;//请求任务已经更新了部分cache数据，通知外界可以来取最新的cache数据了
 - (void)sessionTask:(AVPlayer_URLSessionTask *)task completedSuccessfully:(NSString *)cacheFilePath; //请求任务已经完成，注意，完成的不一定是整音乐，可能是拖拽后某个位置到结束的音乐
-- (void)sessionTask:(AVPlayer_URLSessionTask *)task didFailed:(NSError *)error; //请求任务已经失败(已经将缓存文件存到了缓存目录)
+- (void)sessionTask:(AVPlayer_URLSessionTask *)task didFailed:(NSError *)error; //请求任务已经失败
 
 @end
 
