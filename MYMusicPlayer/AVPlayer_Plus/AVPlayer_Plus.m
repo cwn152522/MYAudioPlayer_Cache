@@ -100,6 +100,8 @@
         return;
     
     if(itemIndex == self.currentIndex){
+        [self pause];
+        [self seekToProgress:0.0f];
         [self play];
     }
     
@@ -107,6 +109,7 @@
         _currentIndex = itemIndex;
         __block AVPlayerItem *item = [self getCurrentPlayerItem];//获取当前播放音乐
         [self replaceCurrentItemWithPlayerItem:item];
+        [self pause];
         [self play];
     }
 }

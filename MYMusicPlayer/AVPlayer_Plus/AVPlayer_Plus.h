@@ -65,14 +65,8 @@
 
 #import <UIKit/UIKit.h>
 #import <AVFoundation/AVFoundation.h>
+#import "AVPlayer_Define.h"
 @class AVPlayer_Plus;
-
-typedef NS_ENUM(NSInteger, AVPlayerPlayMode) {
-    AVPlayerPlayModeSequenceList,//顺序播放，列表循环
-    AVPlayerPlayModeRandomList,//随机播放
-    AVPlayerPlayModeOnce, //单曲播放，播完结束
-    AVPlayerPlayModeSingleLoop//单曲循环
-};
 
 
 #pragma mark - AVPlayer_PlusDelegate
