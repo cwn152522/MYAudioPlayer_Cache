@@ -1,11 +1,11 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.XIB" version="3.0" toolsVersion="11762" systemVersion="16B2657" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" colorMatched="YES">
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.XIB" version="3.0" toolsVersion="12121" systemVersion="16F73" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" colorMatched="YES">
     <device id="retina4_7" orientation="portrait">
         <adaptation id="fullscreen"/>
     </device>
     <dependencies>
         <deployment identifier="iOS"/>
-        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="11757"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="12089"/>
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
     </dependencies>
     <objects>
@@ -15,18 +15,18 @@
             <rect key="frame" x="0.0" y="0.0" width="320" height="44"/>
             <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
             <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="KGk-i7-Jjw" id="H2p-sc-9uM">
-                <rect key="frame" x="0.0" y="0.0" width="320" height="43"/>
+                <rect key="frame" x="0.0" y="0.0" width="320" height="44"/>
                 <autoresizingMask key="autoresizingMask"/>
                 <subviews>
-                    <imageView hidden="YES" userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="guping_isplay" translatesAutoresizingMaskIntoConstraints="NO" id="aFd-gc-Vpf">
-                        <rect key="frame" x="12" y="15" width="14" height="14"/>
+                    <imageView hidden="YES" userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="aFd-gc-Vpf" customClass="AVPlayer_IsPlayAnimationView">
+                        <rect key="frame" x="12" y="9" width="16" height="20"/>
                         <constraints>
-                            <constraint firstAttribute="height" constant="14" id="bVG-dL-Vam"/>
-                            <constraint firstAttribute="width" constant="14" id="pQk-XN-Qua"/>
+                            <constraint firstAttribute="height" constant="20" id="bVG-dL-Vam"/>
+                            <constraint firstAttribute="width" constant="16" id="pQk-XN-Qua"/>
                         </constraints>
                     </imageView>
                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="CT8-XN-cnu">
-                        <rect key="frame" x="12" y="14" width="33" height="16"/>
+                        <rect key="frame" x="14" y="14" width="33" height="16"/>
                         <fontDescription key="fontDescription" type="system" pointSize="13"/>
                         <color key="textColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                         <nil key="highlightedColor"/>
@@ -47,13 +47,13 @@
                 </subviews>
                 <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
                 <constraints>
-                    <constraint firstItem="aFd-gc-Vpf" firstAttribute="centerY" secondItem="H2p-sc-9uM" secondAttribute="centerY" id="298-aY-0Oo"/>
+                    <constraint firstItem="aFd-gc-Vpf" firstAttribute="centerY" secondItem="H2p-sc-9uM" secondAttribute="centerY" constant="-3" id="298-aY-0Oo"/>
                     <constraint firstItem="aFd-gc-Vpf" firstAttribute="leading" secondItem="H2p-sc-9uM" secondAttribute="leading" constant="12" id="CSx-Pz-Jyh"/>
                     <constraint firstItem="Nwu-md-DE1" firstAttribute="centerY" secondItem="H2p-sc-9uM" secondAttribute="centerY" id="Xg8-kT-vaP"/>
-                    <constraint firstItem="CT8-XN-cnu" firstAttribute="centerY" secondItem="aFd-gc-Vpf" secondAttribute="centerY" id="ZCl-7p-J3a"/>
                     <constraint firstAttribute="bottom" secondItem="7La-yR-oVN" secondAttribute="bottom" id="dBW-0g-2u1"/>
                     <constraint firstItem="CT8-XN-cnu" firstAttribute="leading" secondItem="aFd-gc-Vpf" secondAttribute="trailing" constant="-14" id="kht-8u-cRf"/>
                     <constraint firstAttribute="trailing" secondItem="Nwu-md-DE1" secondAttribute="trailing" constant="12" id="moc-Z3-1WX"/>
+                    <constraint firstItem="CT8-XN-cnu" firstAttribute="centerY" secondItem="H2p-sc-9uM" secondAttribute="centerY" id="pyH-h8-2Dc"/>
                 </constraints>
             </tableViewCellContentView>
             <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
@@ -62,13 +62,10 @@
                 <constraint firstItem="7La-yR-oVN" firstAttribute="leading" secondItem="KGk-i7-Jjw" secondAttribute="leading" constant="12" id="ODI-SZ-afT"/>
             </constraints>
             <connections>
-                <outlet property="isPlayImage" destination="aFd-gc-Vpf" id="u6w-er-jtU"/>
+                <outlet property="isPlayImage" destination="aFd-gc-Vpf" id="yme-v3-cup"/>
                 <outlet property="nameLabel" destination="CT8-XN-cnu" id="bUX-7t-Rb7"/>
                 <outlet property="nameLabelLeft" destination="kht-8u-cRf" id="efM-jN-OBH"/>
             </connections>
         </tableViewCell>
     </objects>
-    <resources>
-        <image name="guping_isplay" width="14" height="14"/>
-    </resources>
 </document>

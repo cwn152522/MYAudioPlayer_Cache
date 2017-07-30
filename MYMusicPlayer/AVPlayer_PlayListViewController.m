@@ -86,10 +86,17 @@ static NSString *const kCellIdentifier = @"list_cell_Id";
     
     if(item.isPlaying == YES){
         cell.isPlayImage.hidden = NO;
+        [cell startAnimation];
         cell.nameLabelLeft.constant = 5;
+        [UIView animateWithDuration:0.12 animations:^{
+            [cell.contentView layoutIfNeeded];
+        }];
     }else{
         cell.isPlayImage.hidden = YES;
         cell.nameLabelLeft.constant = -14;
+        [UIView animateWithDuration:0.12 animations:^{
+            [cell.contentView layoutIfNeeded];
+        }];
     }
     return cell;
 }

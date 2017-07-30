@@ -36,8 +36,8 @@
 - (void)viewDidLoad {
     [super viewDidLoad];
     self.playListArray = @[
-                           [[MusicModel alloc] initWithDictionary:@{@"music_url":@"http://audio.xmcdn.com/group29/M04/BE/DA/wKgJWVle4BjzvgpgAS4Y4A7PBjQ631.m4a", @"music_title":@"杨帆测试标题", @"music_album":@"投资有道", @"musc_singer":@"杨帆"}],
-                           [[MusicModel alloc] initWithDictionary:@{@"music_url":@"http://download.lingyongqian.cn/music/AdagioSostenuto.mp3", @"music_title":@"大盘急跌，贪婪与恐惧的较量", @"music_album":@"龙虎榜揭秘", @"musc_singer":@"林炜"}],
+                                 [[MusicModel alloc] initWithDictionary:@{@"music_url":@"http://audio.xmcdn.com/group29/M04/BE/DA/wKgJWVle4BjzvgpgAS4Y4A7PBjQ631.m4a", @"music_title":@"杨帆测试标题", @"music_album":@"投资有道", @"musc_singer":@"杨帆"}],
+                                 [[MusicModel alloc] initWithDictionary:@{@"music_url":@"http://download.lingyongqian.cn/music/AdagioSostenuto.mp3", @"music_title":@"大盘急跌，贪婪与恐惧的较量", @"music_album":@"龙虎榜揭秘", @"musc_singer":@"林炜"}],
                                   [[MusicModel alloc] initWithDictionary:@{@"music_url":@"http://fjdx.sc.chinaz.com/Files/DownLoad/sound1/201707/8930.mp3", @"music_title":@"如何利用股东人数搭上机构顺风...", @"music_album":@"早间财经内线", @"musc_singer":@"林炜"}],
                                   [[MusicModel alloc] initWithDictionary:@{@"music_url":@"http://fjdx.sc.chinaz.com/Files/DownLoad/sound1/201707/8927.mp3", @"music_title":@"急跌放量捡红包", @"music_album":@"盘口摩丝密码", @"musc_singer":@"林炜"}],
                                   ];//设置播放列表
@@ -107,7 +107,7 @@
 
 - (void)player:(AVPlayer_Plus *)player playerIsPlaying:(NSTimeInterval)currentTime restTime:(NSTimeInterval)restTime progress:(CGFloat)progress{
     //TODO: 获取当前播放进度
-    NSLog(@"当前播放时间:%.0f\n剩余播放时间:%.0f\n当前播放进度:%.2f\n总时长为:%.0f", currentTime, restTime, progress, player.duration);
+//    NSLog(@"当前播放时间:%.0f\n剩余播放时间:%.0f\n当前播放进度:%.2f\n总时长为:%.0f", currentTime, restTime, progress, player.duration);
     self.sliderBar.value = progress;
     [self updateLockedScreenMusic];//更新锁屏音乐信息
 }
