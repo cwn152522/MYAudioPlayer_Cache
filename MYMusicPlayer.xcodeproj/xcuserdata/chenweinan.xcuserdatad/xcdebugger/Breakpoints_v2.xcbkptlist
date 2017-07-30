@@ -31,7 +31,7 @@
             endingColumnNumber = "9223372036854775807"
             startingLineNumber = "43"
             endingLineNumber = "43"
-            landmarkName = "-resourceLoader:didCancelLoadingRequest:"
+            landmarkName = "-resourceLoader:shouldWaitForLoadingOfRequestedResource:"
             landmarkType = "7">
          </BreakpointContent>
       </BreakpointProxy>
