@@ -51,6 +51,9 @@
     self.playBtn.userInteractionEnabled = NO;
     [self.sliderBar setThumbImage:[UIImage imageNamed:@"sliderTracing"] forState:UIControlStateNormal];
     
+    [self.sliderBar addTarget:self action:@selector(onSliderTouchedDown) forControlEvents:UIControlEventTouchDown];
+    [self.sliderBar addTarget:self action:@selector(onSliderTouchedUp) forControlEvents:UIControlEventTouchUpInside];
+    
     [self configNavigationView];
     [self configPlayList];
     // Do any additional setup after loading the view, typically from a nib.
@@ -155,6 +158,12 @@
 - (IBAction)onSliderValueChanged:(UISlider *)sender {
 //    self.resourceLoader.seekRequired = YES;
     [self.player seekToProgress:sender.value];
+}
+- (void)onSliderTouchedDown{
+        [self.player pause];
+}
+- (void)onSliderTouchedUp{
+    [self.player play];
 }
 
 - (IBAction)onClickListBtn:(UIButton *)sender {
