@@ -36,7 +36,6 @@
                  }
             (3)更新锁屏播放器播放信息(含歌曲名、专辑名、歌曲图片、进度条、时间信息等)
                 只需在代理方法-player:playerIsPlaying:restTime:progress:中调用如下方法即可
-                 #import <MediaPlayer/MediaPlayer.h>
                  - (void)updateLockedScreenMusic{
                      //TODO: 锁屏时候的音乐信息更新，建议1秒更新一次
                      NSLog(@"当前播放的是第%ld首歌", self.player.currentIndex);//获取当前播放的歌曲，然后，取model数据，填充播放信息中心内容

@@ -1,0 +1,20 @@
+//
+//  AVPlayer_Plus.pch
+//  AVPlayer_Plus
+//
+//  Created by 陈伟南 on 2017/7/30.
+//  Copyright © 2017年 陈伟南. All rights reserved.
+//
+
+#ifndef AVPlayer_Plus_pch
+#define AVPlayer_Plus_pch
+
+#import "AVPlayer_ResourceLoader.h"
+#import "AVPlayer_URLSessionTask.h"
+#import "AVPlayer_CacheFileHandler.h"
+#import "AVPlayer_CachePreference.h"
+
+// Include any system framework and library headers here that should be included in all compilation units.
+// You will also need to set the Prefix Header build setting of one or more of your targets to reference this file.
+
+#endif /* AVPlayer_Plus_pch */
