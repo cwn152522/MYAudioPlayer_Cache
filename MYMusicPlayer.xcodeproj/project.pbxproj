@@ -311,10 +311,10 @@
 		BE66E2EF1F14DDB900CCC706 /* AVPlayer_Plus */ = {
 			isa = PBXGroup;
 			children = (
-				BE66E2F01F14DDB900CCC706 /* AVPlayer_Plus.h */,
-				BE66E2F11F14DDB900CCC706 /* AVPlayer_Plus.m */,
 				BE5C1E771F15C2FE009EC4DB /* AVPlayer_BaseViewController.h */,
 				BE5C1E781F15C2FE009EC4DB /* AVPlayer_BaseViewController.m */,
+				BE66E2F01F14DDB900CCC706 /* AVPlayer_Plus.h */,
+				BE66E2F11F14DDB900CCC706 /* AVPlayer_Plus.m */,
 				BE5C1E7D1F15C3C1009EC4DB /* AVPlayer_ResourceLoader.h */,
 				BE5C1E7E1F15C3C1009EC4DB /* AVPlayer_ResourceLoader.m */,
 				BE5C1E861F15F661009EC4DB /* AVPlayer_URLSessionTask.h */,

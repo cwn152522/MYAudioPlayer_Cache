@@ -20,6 +20,9 @@
  */
 @property (strong, nonatomic) AVPlayer_Plus *player;
 
+/**
+ avplayer数据流加载对象
+ */
 @property (strong, nonatomic) AVPlayer_ResourceLoader *resourceLoader;
 
 - (void)player:(AVPlayer_Plus *)player willPlayUrl:(NSURL *)music_url withResponse:(void (^)(AVURLAsset *asset, NSURL *fileUrl))response;//当子类需要在音乐切换时做操作时，如：更新播放列表ui，可重写此方法，记得先调用[super player:willPlayUrl:withResponse:]
