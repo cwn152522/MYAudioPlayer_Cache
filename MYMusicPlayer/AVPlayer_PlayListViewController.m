@@ -93,7 +93,7 @@ static NSString *const kCellIdentifier = @"list_cell_Id";
         }];
     }else{
         cell.isPlayImage.hidden = YES;
-        cell.nameLabelLeft.constant = -14;
+        cell.nameLabelLeft.constant = -16;
         [UIView animateWithDuration:0.12 animations:^{
             [cell.contentView layoutIfNeeded];
         }];
