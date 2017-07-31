@@ -1,11 +1,11 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.XIB" version="3.0" toolsVersion="12121" systemVersion="16F73" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" colorMatched="YES">
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.XIB" version="3.0" toolsVersion="11762" systemVersion="16B2657" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" colorMatched="YES">
     <device id="retina4_7" orientation="portrait">
         <adaptation id="fullscreen"/>
     </device>
     <dependencies>
         <deployment identifier="iOS"/>
-        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="12089"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="11757"/>
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
     </dependencies>
     <objects>
@@ -19,7 +19,7 @@
                 <autoresizingMask key="autoresizingMask"/>
                 <subviews>
                     <imageView hidden="YES" userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="aFd-gc-Vpf" customClass="AVPlayer_IsPlayAnimationView">
-                        <rect key="frame" x="12" y="9" width="16" height="20"/>
+                        <rect key="frame" x="12" y="8" width="16" height="20"/>
                         <constraints>
                             <constraint firstAttribute="height" constant="20" id="bVG-dL-Vam"/>
                             <constraint firstAttribute="width" constant="16" id="pQk-XN-Qua"/>
@@ -47,7 +47,7 @@
                 </subviews>
                 <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
                 <constraints>
-                    <constraint firstItem="aFd-gc-Vpf" firstAttribute="centerY" secondItem="H2p-sc-9uM" secondAttribute="centerY" constant="-3" id="298-aY-0Oo"/>
+                    <constraint firstItem="aFd-gc-Vpf" firstAttribute="centerY" secondItem="H2p-sc-9uM" secondAttribute="centerY" constant="-4" id="298-aY-0Oo"/>
                     <constraint firstItem="aFd-gc-Vpf" firstAttribute="leading" secondItem="H2p-sc-9uM" secondAttribute="leading" constant="12" id="CSx-Pz-Jyh"/>
                     <constraint firstItem="Nwu-md-DE1" firstAttribute="centerY" secondItem="H2p-sc-9uM" secondAttribute="centerY" id="Xg8-kT-vaP"/>
                     <constraint firstAttribute="bottom" secondItem="7La-yR-oVN" secondAttribute="bottom" id="dBW-0g-2u1"/>

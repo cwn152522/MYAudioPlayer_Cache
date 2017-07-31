@@ -79,7 +79,7 @@
     //    NSLog(@"%lf",self.itemLayer.position.y - self.itemLayer.bounds.size.height/2 );
     animation.toValue = @(layer.frame.origin.x == 0 ? self.itemLayer.position.y - self.itemLayer.bounds.size.height/2 : size.height + 6);
     animation.duration = 0.36;
-    animation.timingFunction = [CAMediaTimingFunction functionWithName:layer.frame.origin.x == 0 ?kCAMediaTimingFunctionEaseOut : kCAMediaTimingFunctionEaseIn];
+    animation.timingFunction = [CAMediaTimingFunction functionWithName:layer.frame.origin.x == 0 ?kCAMediaTimingFunctionEaseInEaseOut : kCAMediaTimingFunctionEaseInEaseOut];
     animation.autoreverses = YES;
     animation.repeatCount = HUGE_VALF;
     

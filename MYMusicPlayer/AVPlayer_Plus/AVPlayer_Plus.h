@@ -38,7 +38,7 @@
                 只需在代理方法-player:playerIsPlaying:restTime:progress:中调用如下方法即可
                  #import <MediaPlayer/MediaPlayer.h>
                  - (void)updateLockedScreenMusic{
-                     //TODO: 锁屏时候的音乐信息更新，建议1秒更新一次
+                     //锁屏时候的音乐信息更新，建议1秒更新一次
                      NSLog(@"当前播放的是第%ld首歌", self.player.currentIndex);//获取当前播放的歌曲，然后，取model数据，填充播放信息中心内容
                      // 播放信息中心
                      MPNowPlayingInfoCenter *center = [MPNowPlayingInfoCenter defaultCenter];
@@ -151,7 +151,7 @@
 @property (assign, nonatomic, readonly) NSTimeInterval duration;
 
 
-#pragma mark - 播放控制
+#pragma mark 播放控制
 
 /**
  播放指定音乐
