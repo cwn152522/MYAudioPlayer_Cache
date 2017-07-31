@@ -33,7 +33,7 @@
                     </label>
                     <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="7La-yR-oVN">
                         <rect key="frame" x="12" y="43" width="308" height="0.0"/>
-                        <color key="backgroundColor" red="0.78823529410000004" green="0.75686274509999996" blue="0.83921568629999999" alpha="1" colorSpace="calibratedRGB"/>
+                        <color key="backgroundColor" red="0.33333333333333331" green="0.33333333333333331" blue="0.33333333333333331" alpha="0.84928831335616439" colorSpace="calibratedRGB"/>
                         <constraints>
                             <constraint firstAttribute="height" constant="0.5" id="6YG-HC-RBn"/>
                         </constraints>

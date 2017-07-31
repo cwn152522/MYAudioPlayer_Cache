@@ -73,7 +73,7 @@
 
 - (UIVisualEffectView *)effectView{
     if(!_effectView){
-        UIBlurEffect *blur = [UIBlurEffect effectWithStyle:UIBlurEffectStyleLight];
+        UIBlurEffect *blur = [UIBlurEffect effectWithStyle:UIBlurEffectStyleLight ];
         _effectView = [[UIVisualEffectView alloc] initWithEffect:blur];
     }
     return _effectView;

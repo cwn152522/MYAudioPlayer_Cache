@@ -21,7 +21,7 @@
                         <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
-                            <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="bofang.png" translatesAutoresizingMaskIntoConstraints="NO" id="EuJ-5j-ZQl">
+                            <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="bofang" translatesAutoresizingMaskIntoConstraints="NO" id="EuJ-5j-ZQl">
                                 <rect key="frame" x="0.0" y="0.0" width="375" height="603"/>
                             </imageView>
                             <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="gOQ-p8-3O2">
@@ -164,7 +164,7 @@
         </scene>
     </scenes>
     <resources>
-        <image name="bofang.png" width="780" height="1234"/>
+        <image name="bofang" width="375" height="603"/>
         <image name="guping_bofang" width="51" height="51"/>
         <image name="guping_last" width="16" height="20"/>
         <image name="guping_list" width="16" height="16"/>
