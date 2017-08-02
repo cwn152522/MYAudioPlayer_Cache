@@ -13,7 +13,7 @@
 #import "AVPlayer_Plus.h"
 #import "AVPlayer_ResourceLoader.h"
 
-@interface AVPlayer_BaseViewController : UIViewController<AVPlayer_PlusDelegate>
+@interface AVPlayer_BaseViewController : UIViewController<AVPlayer_PlusDelegate, AVPlayer_ResourceLoaderDelegate>
 
 /**
  拓展版的avplayer播放器，支持播放控制(播放、暂停、上下首、循环模式等)、播放进度监听等。

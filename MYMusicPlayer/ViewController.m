@@ -92,7 +92,6 @@
     //TODO: 获取当前播放器状态
     if(playerStatus == AVPlayerStatusReadyToPlay){
         [self onClickButton:_playBtn];//开始播放
-        self.playBtn.userInteractionEnabled = YES;
         [self.navigationView.zHongJianlable setText:[self.playListArray[self.player.currentIndex] music_title]];
         self.navigationView.subTitle = [self.playListArray[self.player.currentIndex] musc_singer];
         [self.playListVC musicWillStartToPlay:self.player.currentIndex];
@@ -112,7 +111,17 @@
     [self updateLockedScreenMusic];//更新锁屏音乐信息
 }
 
-#pragma mark AVPlayer_PlayListDelegate
+#pragma mark - AVPlayer_ResourceLoaderDelegate
+
+- (void)loader:(AVPlayer_ResourceLoader *)loader isLoading:(CGFloat)progress{
+    self.playBtn.userInteractionEnabled = YES;
+}
+
+- (void)loader:(AVPlayer_ResourceLoader *)loader failLoadingWithError:(NSError *)error{
+    
+}
+
+#pragma mark - AVPlayer_PlayListDelegate
 
 - (void)playList_onClickClose{
     [self onClickListBtn:self.listBtn];

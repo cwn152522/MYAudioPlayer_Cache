@@ -21,12 +21,14 @@
  */
 + (BOOL)createTempFile;
 
+
 /**
  往临时文件写入数据
 
  @param data 已经缓存到了的数据
  */
 + (void)writeTempFileData:(NSData *)data;
+
 
 /**
  从临时文件中读取某段缓冲数据
@@ -36,6 +38,7 @@
  */
 + (NSData *)readTempFileDataWithOffset:(NSUInteger)offset length:(NSUInteger)length;
 
+
 /**
  保存临时文件到缓存文件夹
 
@@ -44,6 +47,7 @@
  */
 + (BOOL)saveTempFileIntoCacheFolderWithFileName:(NSString *)fileName;
 
+
 /**
  判断指定音频url是否存在相应缓存文件
 
@@ -51,6 +55,7 @@
  @return 缓存文件路径
  */
 + (NSString *)cacheFileExistsWithURL:(NSURL *)url;
+
 
 /**
  清除缓存所有文件
