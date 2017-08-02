@@ -30,6 +30,7 @@
 }
 
 - (void)cacheUrl:(NSURL *)url{
+    [self stopLoading];
     self.requestTask = [[AVPlayer_URLSessionTask alloc]init];
     self.requestTask.requestURL = url;
     self.requestTask.requestOffset = 0;

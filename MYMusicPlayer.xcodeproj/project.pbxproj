@@ -40,8 +40,6 @@
 		BE66E2EC1F14635E00CCC706 /* a.m4a in Resources */ = {isa = PBXBuildFile; fileRef = BE66E2EB1F14635100CCC706 /* a.m4a */; };
 		BE66E2EE1F14D40D00CCC706 /* Icon-58.png in Resources */ = {isa = PBXBuildFile; fileRef = BE66E2ED1F14D40D00CCC706 /* Icon-58.png */; };
 		BE66E2F21F14DDB900CCC706 /* AVPlayer_Plus.m in Sources */ = {isa = PBXBuildFile; fileRef = BE66E2F11F14DDB900CCC706 /* AVPlayer_Plus.m */; };
-		BE87A12E1F2ECBC5008F5802 /* aaa.png in Resources */ = {isa = PBXBuildFile; fileRef = BE87A12D1F2ECBC5008F5802 /* aaa.png */; };
-		BE87A12F1F2ECBCD008F5802 /* aaa.png in Sources */ = {isa = PBXBuildFile; fileRef = BE87A12D1F2ECBC5008F5802 /* aaa.png */; };
 		D6EA98521F2E26CD008F8F23 /* AVPlayer_IsPlayAnimationView.m in Sources */ = {isa = PBXBuildFile; fileRef = D6EA98511F2E26CD008F8F23 /* AVPlayer_IsPlayAnimationView.m */; };
 /* End PBXBuildFile section */
 
@@ -118,7 +116,6 @@
 		BE66E2ED1F14D40D00CCC706 /* Icon-58.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "Icon-58.png"; sourceTree = "<group>"; };
 		BE66E2F01F14DDB900CCC706 /* AVPlayer_Plus.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = AVPlayer_Plus.h; sourceTree = "<group>"; };
 		BE66E2F11F14DDB900CCC706 /* AVPlayer_Plus.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = AVPlayer_Plus.m; sourceTree = "<group>"; };
-		BE87A12D1F2ECBC5008F5802 /* aaa.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = aaa.png; sourceTree = "<group>"; };
 		D6EA98501F2E26CD008F8F23 /* AVPlayer_IsPlayAnimationView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = AVPlayer_IsPlayAnimationView.h; sourceTree = "<group>"; };
 		D6EA98511F2E26CD008F8F23 /* AVPlayer_IsPlayAnimationView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = AVPlayer_IsPlayAnimationView.m; sourceTree = "<group>"; };
 /* End PBXFileReference section */
@@ -151,7 +148,6 @@
 		BE5C8E461F2ACCCA006E1507 /* Resources */ = {
 			isa = PBXGroup;
 			children = (
-				BE87A12D1F2ECBC5008F5802 /* aaa.png */,
 				BE66E2EB1F14635100CCC706 /* a.m4a */,
 				BE66E2ED1F14D40D00CCC706 /* Icon-58.png */,
 				BE5C8E431F2ACC74006E1507 /* fengmian.png */,
@@ -453,7 +449,6 @@
 				BE5C8E621F2AFD10006E1507 /* AVPlayer_PlayListTableHeaderView.xib in Resources */,
 				BE66E2C01F145A3900CCC706 /* Main.storyboard in Resources */,
 				BE5C8E441F2ACC74006E1507 /* fengmian.png in Resources */,
-				BE87A12E1F2ECBC5008F5802 /* aaa.png in Resources */,
 				BE66E2EE1F14D40D00CCC706 /* Icon-58.png in Resources */,
 				BE5C8E5D1F2AEFF7006E1507 /* AVPlayer_PlayListTableViewCell.xib in Resources */,
 			);
@@ -480,7 +475,6 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				BE87A12F1F2ECBCD008F5802 /* aaa.png in Sources */,
 				BE5C8E541F2AD969006E1507 /* UIView+CWNView.m in Sources */,
 				BE5C8E5C1F2AEFF7006E1507 /* AVPlayer_PlayListTableViewCell.m in Sources */,
 				BE5C8E511F2AD924006E1507 /* MYVisualEffectView.m in Sources */,
