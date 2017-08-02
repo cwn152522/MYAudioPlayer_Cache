@@ -148,7 +148,7 @@
 /**
  当前音乐总时长，单位为秒
  */
-@property (assign, nonatomic, readonly) NSTimeInterval duration;
+@property (assign, nonatomic) NSTimeInterval duration;
 
 
 #pragma mark 播放控制
