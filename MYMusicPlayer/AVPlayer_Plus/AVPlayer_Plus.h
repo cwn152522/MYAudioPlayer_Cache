@@ -150,6 +150,11 @@
  */
 @property (assign, nonatomic) NSTimeInterval duration;
 
+/**
+ 是否允许音乐被打断后自动播放，默认为no
+ */
+@property (assign, nonatomic) BOOL shouldResumeAfterInterrupted;
+
 
 #pragma mark 播放控制
 

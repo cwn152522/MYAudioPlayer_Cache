@@ -25,6 +25,10 @@
     // Do any additional setup after loading the view.
 }
 
+-(BOOL)canBecomeFirstResponder{
+    return YES;
+}
+
 - (void)initPlayer{
     self.player = [[AVPlayer_Plus alloc] init];
     self.player.delegate = self;
