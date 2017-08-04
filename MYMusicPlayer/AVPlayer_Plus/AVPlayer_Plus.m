@@ -265,10 +265,11 @@
 - (void)audioSessionInterrupted:(NSNotification *)notification{
     //TODO: 监听音乐打断处理(如某个电话来了、电话结束了)
     NSDictionary * info = notification.userInfo;
-    if ([[info objectForKey:AVAudioSessionInterruptionTypeKey] integerValue] == 1) {
+    if ([[info objectForKey:AVAudioSessionInterruptionTypeKey] integerValue] == 1) {//被打断
         [self pause];
-    }else{
-        [self play];
+    }else{//打断结束
+        if(self.shouldResumeAfterInterrupted == YES)
+            [self play];
     }
 }
 
