@@ -82,6 +82,7 @@
         if ([cacheFilePath length] > 0) {//有本地缓存
             NSURL *fileUrl = [NSURL fileURLWithPath:cacheFilePath];
             response(nil, fileUrl);
+            [self.resourceLoader stopLoading];//取消未完成的缓存任务
         }else{//无本地缓存
             if(self.resourceLoader == nil){
                 self.resourceLoader = [[AVPlayer_ResourceLoader alloc]init];

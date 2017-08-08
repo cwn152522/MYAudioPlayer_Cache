@@ -31,4 +31,9 @@
  */
 - (void)cacheUrl:(NSURL *)url;
 
+/**
+ 取消当前缓存任务
+ */
+- (void)stopLoading;
+
 @end
