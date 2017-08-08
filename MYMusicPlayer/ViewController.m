@@ -91,6 +91,7 @@
 - (void)player:(AVPlayer_Plus *)player playerSateDidChanged:(AVPlayerStatus)playerStatus{
     //TODO: 获取当前播放器状态
     if(playerStatus == AVPlayerStatusReadyToPlay){
+        self.playBtn.userInteractionEnabled = YES;
         [self onClickButton:_playBtn];//开始播放
         [self.navigationView.zHongJianlable setText:[self.playListArray[self.player.currentIndex] music_title]];
         self.navigationView.subTitle = [self.playListArray[self.player.currentIndex] musc_singer];

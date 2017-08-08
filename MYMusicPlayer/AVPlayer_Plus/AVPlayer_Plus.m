@@ -69,8 +69,6 @@
     
     [self pause];
     
-    _currentIndex = 0;
-    
     __block AVPlayerItem *item = [self getCurrentPlayerItem];//获取当前播放音乐
     [self replaceCurrentItemWithPlayerItem:item];
 }

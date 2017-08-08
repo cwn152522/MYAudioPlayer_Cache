@@ -61,7 +61,7 @@
     //TODO: 服务器返回数据，可能会调用多次
     self.responseCacheLength += data.length;
     [self.cacheData appendData:data];
-    NSLog(@"总字节数：%ld, 已缓存字节数：%ld", self.fileLength, self.responseCacheLength);
+    //    NSLog(@"总字节数：%ld, 已缓存字节数：%ld", self.fileLength, self.responseCacheLength);
     if (self.delegate && [self.delegate respondsToSelector:@selector(sessionTask:didUpdataPartOfCacheDatas:)]) {
         [self.delegate sessionTask:self didUpdataPartOfCacheDatas:1.0 * self.responseCacheLength / self.fileLength];
     }
@@ -69,20 +69,20 @@
 
 //请求完成会调用该方法，请求失败则error有值
 - (void)URLSession:(NSURLSession *)session task:(NSURLSessionTask *)task didCompleteWithError:(NSError *)error {
-        if (error) {
-            if (self.delegate && [self.delegate respondsToSelector:@selector(sessionTask:didFailed:)]) {
-                [self.delegate sessionTask:self didFailed:error];
-                [AVPlayer_CacheFileHandler createTempFile];
-            }
-        }else {//请求成功
-            [AVPlayer_CacheFileHandler writeTempFileData:self.cacheData];
-            NSString *fileName = [[self.requestURL.absoluteString componentsSeparatedByString:@"/"] lastObject];
-            [AVPlayer_CacheFileHandler saveTempFileIntoCacheFolderWithFileName:fileName];
-            
-            if (self.delegate && [self.delegate respondsToSelector:@selector(sessionTask:completedSuccessfully:)]) {//不管缓存的是不是整首，都得通知出去
-                [self.delegate sessionTask:self completedSuccessfully:[AVPlayer_CachePreference sharedPreference].tmpFilePath];
-            }
+    if (error) {
+        if (self.delegate && [self.delegate respondsToSelector:@selector(sessionTask:didFailed:)]) {
+            [self.delegate sessionTask:self didFailed:error];
+            [AVPlayer_CacheFileHandler createTempFile];
         }
+    }else {//请求成功
+        [AVPlayer_CacheFileHandler writeTempFileData:self.cacheData];
+        NSString *fileName = [[self.requestURL.absoluteString componentsSeparatedByString:@"/"] lastObject];
+        [AVPlayer_CacheFileHandler saveTempFileIntoCacheFolderWithFileName:fileName];
+        
+        if (self.delegate && [self.delegate respondsToSelector:@selector(sessionTask:completedSuccessfully:)]) {//不管缓存的是不是整首，都得通知出去
+            [self.delegate sessionTask:self completedSuccessfully:[AVPlayer_CachePreference sharedPreference].tmpFilePath];
+        }
+    }
 }
 
 @end

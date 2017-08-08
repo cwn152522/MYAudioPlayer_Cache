@@ -27,14 +27,14 @@
 
 /**
  获取单例对象
-
+ 
  @return self
  */
 + (instancetype)sharedPreference;
 
 /**
  获取缓存文件路径
-
+ 
  @param url 待搜索音频文件的网络地址
  @return 指定网络地址下对应的本地音频路径
  */
@@ -62,7 +62,7 @@
 - (NSURL *)customSchemeURL;
 
 /**
-  还原scheme
+ 还原scheme
  */
 - (NSURL *)originalSchemeURL;
 

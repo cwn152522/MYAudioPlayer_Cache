@@ -17,16 +17,14 @@
 
 - (void)dealloc{
     [[NSNotificationCenter defaultCenter] removeObserver:self];
+    self.player.delegate = nil;
+    self.resourceLoader.delegate = nil;
 }
 
 - (void)viewDidLoad {
     [super viewDidLoad];
     [self initPlayer];
     // Do any additional setup after loading the view.
-}
-
--(BOOL)canBecomeFirstResponder{
-    return YES;
 }
 
 - (void)initPlayer{
@@ -40,6 +38,10 @@
 - (void)didReceiveMemoryWarning {
     [super didReceiveMemoryWarning];
     // Dispose of any resources that can be recreated.
+}
+
+-(BOOL)canBecomeFirstResponder{
+    return YES;
 }
 
 #pragma mark - 远程控制事件处理

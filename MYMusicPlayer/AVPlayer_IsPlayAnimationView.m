@@ -36,17 +36,10 @@
 -(void)configAnimationLayer:(CALayer*)layer withTintColor:(UIColor*)color size:(CGSize)size
 {
     CAReplicatorLayer *replicatorLayer = [CAReplicatorLayer layer];
-    replicatorLayer.frame = CGRectMake(0, 0, size.width / 2, size.height);
+    replicatorLayer.frame = CGRectMake(0, 0, size.width, size.height);
     //    replicatorLayer.position = CGPointZero;
     replicatorLayer.backgroundColor = [UIColor clearColor].CGColor;
     [layer addSublayer:replicatorLayer];
-    
-    CAReplicatorLayer *replicatorLayer1 = [CAReplicatorLayer layer];
-    replicatorLayer1.frame = CGRectMake(size.width / 2, 0, size.width / 2, size.height);
-    //    replicatorLayer1.position = CGPointZero;
-    replicatorLayer1.backgroundColor = [UIColor clearColor].CGColor;
-    [layer addSublayer:replicatorLayer1];
-    
     
     for (id la in layer.sublayers) {
         
@@ -56,7 +49,7 @@
             
             [self addMusicBarAnimationLayerAtLayer:replicatorLayer withTintColor:color size:size];
             
-            NSInteger numOfSpot = 2;
+            NSInteger numOfSpot = 4;
             replicatorLayer.instanceCount = numOfSpot;
             replicatorLayer.instanceTransform = CATransform3DMakeTranslation(size.width*2.5/10, 0.f, 0.f);
             replicatorLayer.instanceDelay = 0.17;
@@ -70,19 +63,17 @@
     CGFloat height = size.height;
     self.itemLayer = [CALayer layer];
     self.itemLayer.bounds = CGRectMake(0, 0, width, height);
-    self.itemLayer.position = CGPointMake(width / 2, layer.frame.origin.x == 0 ? size.height + 6  :  size.height + 6 - self.itemLayer.bounds.size.height/2);
+    self.itemLayer.position = CGPointMake(width / 4,  18);
     self.itemLayer.cornerRadius = 2.0;
     self.itemLayer.backgroundColor = color.CGColor;
     [layer addSublayer:self.itemLayer];
     
     CABasicAnimation *animation = [CABasicAnimation animationWithKeyPath:@"position.y"];
-    //    NSLog(@"%lf",self.itemLayer.position.y - self.itemLayer.bounds.size.height/2 );
-    animation.toValue = @(layer.frame.origin.x == 0 ? self.itemLayer.position.y - self.itemLayer.bounds.size.height/2 : size.height + 6);
+    animation.toValue = @(size.height + 6);
     animation.duration = 0.36;
-    animation.timingFunction = [CAMediaTimingFunction functionWithName:layer.frame.origin.x == 0 ?kCAMediaTimingFunctionEaseInEaseOut : kCAMediaTimingFunctionEaseInEaseOut];
+    //    animation.timingFunction = [CAMediaTimingFunction functionWithName:kCAMediaTimingFunctionEaseInEaseOut];
     animation.autoreverses = YES;
     animation.repeatCount = HUGE_VALF;
-    
     
     [self.itemLayer addAnimation:animation forKey:@"animation"];
 }
@@ -96,11 +87,11 @@
     }
 }
 /*
-// Only override drawRect: if you perform custom drawing.
-// An empty implementation adversely affects performance during animation.
-- (void)drawRect:(CGRect)rect {
-    // Drawing code
-}
-*/
+ // Only override drawRect: if you perform custom drawing.
+ // An empty implementation adversely affects performance during animation.
+ - (void)drawRect:(CGRect)rect {
+ // Drawing code
+ }
+ */
 
 @end
