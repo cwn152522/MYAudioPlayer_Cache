@@ -9,11 +9,6 @@
 /* Begin PBXBuildFile section */
 		BE347B951F2A116B005994A9 /* a.m4a in Sources */ = {isa = PBXBuildFile; fileRef = BE66E2EB1F14635100CCC706 /* a.m4a */; };
 		BE347B961F2A116B005994A9 /* Icon-58.png in Sources */ = {isa = PBXBuildFile; fileRef = BE66E2ED1F14D40D00CCC706 /* Icon-58.png */; };
-		BE5C1E791F15C2FE009EC4DB /* AVPlayer_BaseViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = BE5C1E781F15C2FE009EC4DB /* AVPlayer_BaseViewController.m */; };
-		BE5C1E7F1F15C3C1009EC4DB /* AVPlayer_ResourceLoader.m in Sources */ = {isa = PBXBuildFile; fileRef = BE5C1E7E1F15C3C1009EC4DB /* AVPlayer_ResourceLoader.m */; };
-		BE5C1E821F15E30B009EC4DB /* AVPlayer_CachePreference.m in Sources */ = {isa = PBXBuildFile; fileRef = BE5C1E811F15E30B009EC4DB /* AVPlayer_CachePreference.m */; };
-		BE5C1E851F15ED56009EC4DB /* AVPlayer_CacheFileHandler.m in Sources */ = {isa = PBXBuildFile; fileRef = BE5C1E841F15ED56009EC4DB /* AVPlayer_CacheFileHandler.m */; };
-		BE5C1E881F15F661009EC4DB /* AVPlayer_URLSessionTask.m in Sources */ = {isa = PBXBuildFile; fileRef = BE5C1E871F15F661009EC4DB /* AVPlayer_URLSessionTask.m */; };
 		BE5C8E441F2ACC74006E1507 /* fengmian.png in Resources */ = {isa = PBXBuildFile; fileRef = BE5C8E431F2ACC74006E1507 /* fengmian.png */; };
 		BE5C8E451F2ACC7B006E1507 /* fengmian.png in Sources */ = {isa = PBXBuildFile; fileRef = BE5C8E431F2ACC74006E1507 /* fengmian.png */; };
 		BE5C8E4D1F2AD828006E1507 /* AVPlayer_PlayListViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = BE5C8E4B1F2AD828006E1507 /* AVPlayer_PlayListViewController.m */; };
@@ -39,7 +34,7 @@
 		BE66E2DB1F145A3900CCC706 /* MYMusicPlayerUITests.m in Sources */ = {isa = PBXBuildFile; fileRef = BE66E2DA1F145A3900CCC706 /* MYMusicPlayerUITests.m */; };
 		BE66E2EC1F14635E00CCC706 /* a.m4a in Resources */ = {isa = PBXBuildFile; fileRef = BE66E2EB1F14635100CCC706 /* a.m4a */; };
 		BE66E2EE1F14D40D00CCC706 /* Icon-58.png in Resources */ = {isa = PBXBuildFile; fileRef = BE66E2ED1F14D40D00CCC706 /* Icon-58.png */; };
-		BE66E2F21F14DDB900CCC706 /* AVPlayer_Plus.m in Sources */ = {isa = PBXBuildFile; fileRef = BE66E2F11F14DDB900CCC706 /* AVPlayer_Plus.m */; };
+		BE7DBD711F3AE17C006C96BD /* AVPlayer_Plus.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = BE7DBD701F3AE17C006C96BD /* AVPlayer_Plus.framework */; };
 		D6EA98521F2E26CD008F8F23 /* AVPlayer_IsPlayAnimationView.m in Sources */ = {isa = PBXBuildFile; fileRef = D6EA98511F2E26CD008F8F23 /* AVPlayer_IsPlayAnimationView.m */; };
 /* End PBXBuildFile section */
 
@@ -61,16 +56,6 @@
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXFileReference section */
-		BE5C1E771F15C2FE009EC4DB /* AVPlayer_BaseViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = AVPlayer_BaseViewController.h; sourceTree = "<group>"; };
-		BE5C1E781F15C2FE009EC4DB /* AVPlayer_BaseViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = AVPlayer_BaseViewController.m; sourceTree = "<group>"; };
-		BE5C1E7D1F15C3C1009EC4DB /* AVPlayer_ResourceLoader.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = AVPlayer_ResourceLoader.h; sourceTree = "<group>"; };
-		BE5C1E7E1F15C3C1009EC4DB /* AVPlayer_ResourceLoader.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = AVPlayer_ResourceLoader.m; sourceTree = "<group>"; };
-		BE5C1E801F15E30B009EC4DB /* AVPlayer_CachePreference.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = AVPlayer_CachePreference.h; sourceTree = "<group>"; };
-		BE5C1E811F15E30B009EC4DB /* AVPlayer_CachePreference.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = AVPlayer_CachePreference.m; sourceTree = "<group>"; };
-		BE5C1E831F15ED56009EC4DB /* AVPlayer_CacheFileHandler.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = AVPlayer_CacheFileHandler.h; sourceTree = "<group>"; };
-		BE5C1E841F15ED56009EC4DB /* AVPlayer_CacheFileHandler.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = AVPlayer_CacheFileHandler.m; sourceTree = "<group>"; };
-		BE5C1E861F15F661009EC4DB /* AVPlayer_URLSessionTask.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = AVPlayer_URLSessionTask.h; sourceTree = "<group>"; };
-		BE5C1E871F15F661009EC4DB /* AVPlayer_URLSessionTask.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = AVPlayer_URLSessionTask.m; sourceTree = "<group>"; };
 		BE5C8E431F2ACC74006E1507 /* fengmian.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = fengmian.png; sourceTree = "<group>"; };
 		BE5C8E4A1F2AD828006E1507 /* AVPlayer_PlayListViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = AVPlayer_PlayListViewController.h; sourceTree = "<group>"; };
 		BE5C8E4B1F2AD828006E1507 /* AVPlayer_PlayListViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = AVPlayer_PlayListViewController.m; sourceTree = "<group>"; };
@@ -95,7 +80,6 @@
 		BE5C8E6D1F2B0D4E006E1507 /* MYBaseJsonModel.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MYBaseJsonModel.m; sourceTree = "<group>"; };
 		BE5C8E6F1F2B2216006E1507 /* NavigationSubtitleView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = NavigationSubtitleView.h; sourceTree = "<group>"; };
 		BE5C8E701F2B2216006E1507 /* NavigationSubtitleView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = NavigationSubtitleView.m; sourceTree = "<group>"; };
-		BE5C8E721F2B238C006E1507 /* AVPlayer_Define.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = AVPlayer_Define.h; sourceTree = "<group>"; };
 		BE66E2B21F145A3900CCC706 /* MYMusicPlayer.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = MYMusicPlayer.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		BE66E2B61F145A3900CCC706 /* main.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = main.m; sourceTree = "<group>"; };
 		BE66E2B81F145A3900CCC706 /* AppDelegate.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = AppDelegate.h; sourceTree = "<group>"; };
@@ -114,8 +98,7 @@
 		BE66E2DC1F145A3900CCC706 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		BE66E2EB1F14635100CCC706 /* a.m4a */ = {isa = PBXFileReference; lastKnownFileType = file; path = a.m4a; sourceTree = "<group>"; };
 		BE66E2ED1F14D40D00CCC706 /* Icon-58.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "Icon-58.png"; sourceTree = "<group>"; };
-		BE66E2F01F14DDB900CCC706 /* AVPlayer_Plus.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = AVPlayer_Plus.h; sourceTree = "<group>"; };
-		BE66E2F11F14DDB900CCC706 /* AVPlayer_Plus.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = AVPlayer_Plus.m; sourceTree = "<group>"; };
+		BE7DBD701F3AE17C006C96BD /* AVPlayer_Plus.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; path = AVPlayer_Plus.framework; sourceTree = "<group>"; };
 		D6EA98501F2E26CD008F8F23 /* AVPlayer_IsPlayAnimationView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = AVPlayer_IsPlayAnimationView.h; sourceTree = "<group>"; };
 		D6EA98511F2E26CD008F8F23 /* AVPlayer_IsPlayAnimationView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = AVPlayer_IsPlayAnimationView.m; sourceTree = "<group>"; };
 /* End PBXFileReference section */
@@ -125,6 +108,7 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				BE7DBD711F3AE17C006C96BD /* AVPlayer_Plus.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -311,19 +295,7 @@
 		BE66E2EF1F14DDB900CCC706 /* AVPlayer_Plus */ = {
 			isa = PBXGroup;
 			children = (
-				BE5C1E771F15C2FE009EC4DB /* AVPlayer_BaseViewController.h */,
-				BE5C1E781F15C2FE009EC4DB /* AVPlayer_BaseViewController.m */,
-				BE66E2F01F14DDB900CCC706 /* AVPlayer_Plus.h */,
-				BE66E2F11F14DDB900CCC706 /* AVPlayer_Plus.m */,
-				BE5C1E7D1F15C3C1009EC4DB /* AVPlayer_ResourceLoader.h */,
-				BE5C1E7E1F15C3C1009EC4DB /* AVPlayer_ResourceLoader.m */,
-				BE5C1E861F15F661009EC4DB /* AVPlayer_URLSessionTask.h */,
-				BE5C1E871F15F661009EC4DB /* AVPlayer_URLSessionTask.m */,
-				BE5C1E831F15ED56009EC4DB /* AVPlayer_CacheFileHandler.h */,
-				BE5C1E841F15ED56009EC4DB /* AVPlayer_CacheFileHandler.m */,
-				BE5C1E801F15E30B009EC4DB /* AVPlayer_CachePreference.h */,
-				BE5C1E811F15E30B009EC4DB /* AVPlayer_CachePreference.m */,
-				BE5C8E721F2B238C006E1507 /* AVPlayer_Define.h */,
+				BE7DBD701F3AE17C006C96BD /* AVPlayer_Plus.framework */,
 			);
 			path = AVPlayer_Plus;
 			sourceTree = "<group>";
@@ -483,20 +455,14 @@
 				BE347B961F2A116B005994A9 /* Icon-58.png in Sources */,
 				BE5C8E711F2B2216006E1507 /* NavigationSubtitleView.m in Sources */,
 				BE5C8E651F2B09D8006E1507 /* NavigationView.m in Sources */,
-				BE5C1E881F15F661009EC4DB /* AVPlayer_URLSessionTask.m in Sources */,
 				BE5C8E6E1F2B0D4E006E1507 /* MYBaseJsonModel.m in Sources */,
 				BE5C8E681F2B09F4006E1507 /* MYImageButton.m in Sources */,
 				D6EA98521F2E26CD008F8F23 /* AVPlayer_IsPlayAnimationView.m in Sources */,
 				BE66E2BD1F145A3900CCC706 /* ViewController.m in Sources */,
-				BE66E2F21F14DDB900CCC706 /* AVPlayer_Plus.m in Sources */,
-				BE5C1E791F15C2FE009EC4DB /* AVPlayer_BaseViewController.m in Sources */,
-				BE5C1E851F15ED56009EC4DB /* AVPlayer_CacheFileHandler.m in Sources */,
 				BE5C8E601F2AFCFC006E1507 /* AVPlayer_PlayListTableHeaderView.m in Sources */,
 				BE66E2BA1F145A3900CCC706 /* AppDelegate.m in Sources */,
 				BE5C8E4D1F2AD828006E1507 /* AVPlayer_PlayListViewController.m in Sources */,
-				BE5C1E7F1F15C3C1009EC4DB /* AVPlayer_ResourceLoader.m in Sources */,
 				BE5C8E6B1F2B0CED006E1507 /* MusicModel.m in Sources */,
-				BE5C1E821F15E30B009EC4DB /* AVPlayer_CachePreference.m in Sources */,
 				BE66E2B71F145A3900CCC706 /* main.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -647,6 +613,10 @@
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				DEVELOPMENT_TEAM = P6247WX9N5;
+				FRAMEWORK_SEARCH_PATHS = (
+					"$(inherited)",
+					"$(PROJECT_DIR)/MYMusicPlayer/AVPlayer_Plus",
+				);
 				INFOPLIST_FILE = MYMusicPlayer/Info.plist;
 				IPHONEOS_DEPLOYMENT_TARGET = 8.1;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
@@ -660,6 +630,10 @@
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				DEVELOPMENT_TEAM = P6247WX9N5;
+				FRAMEWORK_SEARCH_PATHS = (
+					"$(inherited)",
+					"$(PROJECT_DIR)/MYMusicPlayer/AVPlayer_Plus",
+				);
 				INFOPLIST_FILE = MYMusicPlayer/Info.plist;
 				IPHONEOS_DEPLOYMENT_TARGET = 8.1;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";

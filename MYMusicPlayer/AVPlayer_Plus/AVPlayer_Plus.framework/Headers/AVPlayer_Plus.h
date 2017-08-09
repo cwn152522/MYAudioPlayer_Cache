@@ -117,7 +117,12 @@
 @end
 
 
+
+
 #pragma mark - AVPlayer_Plus
+#import "AVPlayer_ResourceLoader.h"
+#import "AVPlayer_CachePreference.h"
+#import "AVPlayer_BaseViewController.h"
 
 @interface AVPlayer_Plus : AVPlayer
 

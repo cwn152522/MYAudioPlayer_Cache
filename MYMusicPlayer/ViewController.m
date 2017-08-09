@@ -7,7 +7,7 @@
 //
 
 #import "ViewController.h"
-#import "AVPlayer_Plus.h"
+#import <AVPlayer_Plus/AVPlayer_Plus.h>
 #import <MediaPlayer/MediaPlayer.h>
 #import "AVPlayer_PlayListViewController.h"
 #import "UIView+CWNView.h"

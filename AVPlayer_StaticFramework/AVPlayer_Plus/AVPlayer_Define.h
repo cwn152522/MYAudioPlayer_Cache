@@ -9,6 +9,8 @@
 #ifndef AVPlayer_Define_h
 #define AVPlayer_Define_h
 
+#import <MediaPlayer/MediaPlayer.h>
+
 typedef NS_ENUM(NSInteger, AVPlayerPlayMode) {
     AVPlayerPlayModeSequenceList,//顺序播放，列表循环
     AVPlayerPlayModeRandomList,//随机播放

@@ -9,16 +9,16 @@
 /* Begin PBXBuildFile section */
 		D657CE651F2D6CBC00FCECC8 /* AVPlayer_Plus.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = D657CE5B1F2D6CBB00FCECC8 /* AVPlayer_Plus.framework */; };
 		D657CE6A1F2D6CBC00FCECC8 /* AVPlayer_PlusTests.m in Sources */ = {isa = PBXBuildFile; fileRef = D657CE691F2D6CBC00FCECC8 /* AVPlayer_PlusTests.m */; };
-		D657CE821F2D6CFA00FCECC8 /* AVPlayer_BaseViewController.h in Headers */ = {isa = PBXBuildFile; fileRef = D657CE751F2D6CFA00FCECC8 /* AVPlayer_BaseViewController.h */; settings = {ATTRIBUTES = (Public, ); }; };
+		D657CE821F2D6CFA00FCECC8 /* AVPlayer_BaseViewController.h in Headers */ = {isa = PBXBuildFile; fileRef = D657CE751F2D6CFA00FCECC8 /* AVPlayer_BaseViewController.h */; settings = {ATTRIBUTES = (Private, ); }; };
 		D657CE831F2D6CFA00FCECC8 /* AVPlayer_BaseViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = D657CE761F2D6CFA00FCECC8 /* AVPlayer_BaseViewController.m */; };
 		D657CE841F2D6CFA00FCECC8 /* AVPlayer_CacheFileHandler.h in Headers */ = {isa = PBXBuildFile; fileRef = D657CE771F2D6CFA00FCECC8 /* AVPlayer_CacheFileHandler.h */; };
 		D657CE851F2D6CFA00FCECC8 /* AVPlayer_CacheFileHandler.m in Sources */ = {isa = PBXBuildFile; fileRef = D657CE781F2D6CFA00FCECC8 /* AVPlayer_CacheFileHandler.m */; };
-		D657CE861F2D6CFA00FCECC8 /* AVPlayer_CachePreference.h in Headers */ = {isa = PBXBuildFile; fileRef = D657CE791F2D6CFA00FCECC8 /* AVPlayer_CachePreference.h */; settings = {ATTRIBUTES = (Public, ); }; };
+		D657CE861F2D6CFA00FCECC8 /* AVPlayer_CachePreference.h in Headers */ = {isa = PBXBuildFile; fileRef = D657CE791F2D6CFA00FCECC8 /* AVPlayer_CachePreference.h */; settings = {ATTRIBUTES = (Private, ); }; };
 		D657CE871F2D6CFA00FCECC8 /* AVPlayer_CachePreference.m in Sources */ = {isa = PBXBuildFile; fileRef = D657CE7A1F2D6CFA00FCECC8 /* AVPlayer_CachePreference.m */; };
-		D657CE881F2D6CFA00FCECC8 /* AVPlayer_Define.h in Headers */ = {isa = PBXBuildFile; fileRef = D657CE7B1F2D6CFA00FCECC8 /* AVPlayer_Define.h */; settings = {ATTRIBUTES = (Public, ); }; };
-		D657CE891F2D6CFA00FCECC8 /* AVPlayer_Plus.h in Headers */ = {isa = PBXBuildFile; fileRef = D657CE7C1F2D6CFA00FCECC8 /* AVPlayer_Plus.h */; settings = {ATTRIBUTES = (Public, ); }; };
+		D657CE881F2D6CFA00FCECC8 /* AVPlayer_Define.h in Headers */ = {isa = PBXBuildFile; fileRef = D657CE7B1F2D6CFA00FCECC8 /* AVPlayer_Define.h */; settings = {ATTRIBUTES = (Private, ); }; };
+		D657CE891F2D6CFA00FCECC8 /* AVPlayer_Plus.h in Headers */ = {isa = PBXBuildFile; fileRef = D657CE7C1F2D6CFA00FCECC8 /* AVPlayer_Plus.h */; settings = {ATTRIBUTES = (Private, ); }; };
 		D657CE8A1F2D6CFA00FCECC8 /* AVPlayer_Plus.m in Sources */ = {isa = PBXBuildFile; fileRef = D657CE7D1F2D6CFA00FCECC8 /* AVPlayer_Plus.m */; };
-		D657CE8B1F2D6CFA00FCECC8 /* AVPlayer_ResourceLoader.h in Headers */ = {isa = PBXBuildFile; fileRef = D657CE7E1F2D6CFA00FCECC8 /* AVPlayer_ResourceLoader.h */; };
+		D657CE8B1F2D6CFA00FCECC8 /* AVPlayer_ResourceLoader.h in Headers */ = {isa = PBXBuildFile; fileRef = D657CE7E1F2D6CFA00FCECC8 /* AVPlayer_ResourceLoader.h */; settings = {ATTRIBUTES = (Private, ); }; };
 		D657CE8C1F2D6CFA00FCECC8 /* AVPlayer_ResourceLoader.m in Sources */ = {isa = PBXBuildFile; fileRef = D657CE7F1F2D6CFA00FCECC8 /* AVPlayer_ResourceLoader.m */; };
 		D657CE8D1F2D6CFA00FCECC8 /* AVPlayer_URLSessionTask.h in Headers */ = {isa = PBXBuildFile; fileRef = D657CE801F2D6CFA00FCECC8 /* AVPlayer_URLSessionTask.h */; };
 		D657CE8E1F2D6CFA00FCECC8 /* AVPlayer_URLSessionTask.m in Sources */ = {isa = PBXBuildFile; fileRef = D657CE811F2D6CFA00FCECC8 /* AVPlayer_URLSessionTask.m */; };
@@ -131,13 +131,13 @@
 			isa = PBXHeadersBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				D657CE881F2D6CFA00FCECC8 /* AVPlayer_Define.h in Headers */,
 				D657CE891F2D6CFA00FCECC8 /* AVPlayer_Plus.h in Headers */,
 				D657CE821F2D6CFA00FCECC8 /* AVPlayer_BaseViewController.h in Headers */,
+				D657CE8B1F2D6CFA00FCECC8 /* AVPlayer_ResourceLoader.h in Headers */,
 				D657CE861F2D6CFA00FCECC8 /* AVPlayer_CachePreference.h in Headers */,
+				D657CE881F2D6CFA00FCECC8 /* AVPlayer_Define.h in Headers */,
 				D657CE841F2D6CFA00FCECC8 /* AVPlayer_CacheFileHandler.h in Headers */,
 				D657CE8D1F2D6CFA00FCECC8 /* AVPlayer_URLSessionTask.h in Headers */,
-				D657CE8B1F2D6CFA00FCECC8 /* AVPlayer_ResourceLoader.h in Headers */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -414,6 +414,7 @@
 			buildSettings = {
 				DEVELOPMENT_TEAM = P6247WX9N5;
 				INFOPLIST_FILE = AVPlayer_PlusTests/Info.plist;
+				IPHONEOS_DEPLOYMENT_TARGET = 10.2;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @loader_path/Frameworks";
 				PRODUCT_BUNDLE_IDENTIFIER = "cwn.AVPlayer-PlusTests";
 				PRODUCT_NAME = "$(TARGET_NAME)";
@@ -425,6 +426,7 @@
 			buildSettings = {
 				DEVELOPMENT_TEAM = P6247WX9N5;
 				INFOPLIST_FILE = AVPlayer_PlusTests/Info.plist;
+				IPHONEOS_DEPLOYMENT_TARGET = 10.2;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @loader_path/Frameworks";
 				PRODUCT_BUNDLE_IDENTIFIER = "cwn.AVPlayer-PlusTests";
 				PRODUCT_NAME = "$(TARGET_NAME)";

@@ -7,7 +7,7 @@
 //
 
 #import <UIKit/UIKit.h>
-#import "AVPlayer_Define.h"
+#import <AVPlayer_Plus/AVPlayer_Plus.h>
 
 @protocol AVPlayer_PlayListTableHeaderViewDelegate <NSObject>
 

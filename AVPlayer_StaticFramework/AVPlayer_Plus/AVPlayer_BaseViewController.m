@@ -17,6 +17,8 @@
 
 - (void)dealloc{
     [[NSNotificationCenter defaultCenter] removeObserver:self];
+    self.player.delegate = nil;
+    self.resourceLoader.delegate = nil;
 }
 
 - (void)viewDidLoad {
@@ -36,6 +38,10 @@
 - (void)didReceiveMemoryWarning {
     [super didReceiveMemoryWarning];
     // Dispose of any resources that can be recreated.
+}
+
+-(BOOL)canBecomeFirstResponder{
+    return YES;
 }
 
 #pragma mark - 远程控制事件处理
@@ -76,11 +82,12 @@
         if ([cacheFilePath length] > 0) {//有本地缓存
             NSURL *fileUrl = [NSURL fileURLWithPath:cacheFilePath];
             response(nil, fileUrl);
+            [self.resourceLoader stopLoading];//取消未完成的缓存任务
         }else{//无本地缓存
-            self.resourceLoader = [[AVPlayer_ResourceLoader alloc]init];
-            //            self.resourceLoader.delegate = self;
-            //            AVURLAsset * asset = [AVURLAsset URLAssetWithURL:[music_url customSchemeURL] options:nil];
-            //            [asset.resourceLoader setDelegate:self.resourceLoader queue:dispatch_get_main_queue()];
+            if(self.resourceLoader == nil){
+                self.resourceLoader = [[AVPlayer_ResourceLoader alloc]init];
+                self.resourceLoader.delegate = self;
+            }
             response(nil, music_url);
             [self.resourceLoader cacheUrl:music_url];//开始缓存
         }
@@ -88,19 +95,5 @@
         response(nil, nil);
     }
 }
-
-//#pragma mark - AVPlayer_ResourceLoaderDelegate
-
-
-
-/*
-#pragma mark - Navigation
-
-// In a storyboard-based application, you will often want to do a little preparation before navigation
-- (void)prepareForSegue:(UIStoryboardSegue *)segue sender:(id)sender {
-    // Get the new view controller using [segue destinationViewController].
-    // Pass the selected object to the new view controller.
-}
-*/
 
 @end

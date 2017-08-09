@@ -8,7 +8,6 @@
 
 #import <Foundation/Foundation.h>
 #import <AVFoundation/AVFoundation.h>
-#import "AVPlayer_URLSessionTask.h"
 
 @class AVPlayer_ResourceLoader;
 @protocol AVPlayer_ResourceLoaderDelegate <NSObject>

@@ -11,7 +11,6 @@
 
 #import <UIKit/UIKit.h>
 #import "AVPlayer_Plus.h"
-#import "AVPlayer_ResourceLoader.h"
 
 @interface AVPlayer_BaseViewController : UIViewController<AVPlayer_PlusDelegate, AVPlayer_ResourceLoaderDelegate>
 
@@ -26,5 +25,7 @@
 @property (strong, nonatomic) AVPlayer_ResourceLoader *resourceLoader;
 
 - (void)player:(AVPlayer_Plus *)player willPlayUrl:(NSURL *)music_url withResponse:(void (^)(AVURLAsset *asset, NSURL *fileUrl))response;//当子类需要在音乐切换时做操作时，如：更新播放列表ui，可重写此方法，记得先调用[super player:willPlayUrl:withResponse:]
+
+
 
 @end

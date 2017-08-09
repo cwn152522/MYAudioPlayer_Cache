@@ -49,10 +49,10 @@
         //获取播放时间，通知外界
         [self addPeriodicTimeObserverForInterval:CMTimeMake(1, 1) queue:dispatch_get_global_queue(DISPATCH_QUEUE_PRIORITY_DEFAULT, 0) usingBlock:^(CMTime time) {
             NSTimeInterval current = CMTimeGetSeconds(time);
-            _duration = CMTimeGetSeconds(weakSelf.currentItem.duration);
-            float progress = current / _duration;
+            weakSelf.duration = CMTimeGetSeconds(weakSelf.currentItem.duration);
+            float progress = current / weakSelf.duration;
             if(progress >= 0){
-                NSTimeInterval rest = _duration - current;
+                NSTimeInterval rest = weakSelf.duration - current;
                 if([weakSelf.delegate respondsToSelector:@selector(player:playerIsPlaying:restTime:progress:)]){
                     dispatch_async(dispatch_get_main_queue(), ^{
                         [weakSelf.delegate player:weakSelf playerIsPlaying:current restTime:rest progress:progress];
@@ -68,8 +68,6 @@
     _playListArray = playListArray;
     
     [self pause];
-    
-    _currentIndex = 0;
     
     __block AVPlayerItem *item = [self getCurrentPlayerItem];//获取当前播放音乐
     [self replaceCurrentItemWithPlayerItem:item];
@@ -265,10 +263,11 @@
 - (void)audioSessionInterrupted:(NSNotification *)notification{
     //TODO: 监听音乐打断处理(如某个电话来了、电话结束了)
     NSDictionary * info = notification.userInfo;
-    if ([[info objectForKey:AVAudioSessionInterruptionTypeKey] integerValue] == 1) {
+    if ([[info objectForKey:AVAudioSessionInterruptionTypeKey] integerValue] == 1) {//被打断
         [self pause];
-    }else{
-        [self play];
+    }else{//打断结束
+        if(self.shouldResumeAfterInterrupted == YES)
+            [self play];
     }
 }
 

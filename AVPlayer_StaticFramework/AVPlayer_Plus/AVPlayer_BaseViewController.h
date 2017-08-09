@@ -11,17 +11,21 @@
 
 #import <UIKit/UIKit.h>
 #import "AVPlayer_Plus.h"
-@class AVPlayer_ResourceLoader;
 
-@interface AVPlayer_BaseViewController : UIViewController<AVPlayer_PlusDelegate>
+@interface AVPlayer_BaseViewController : UIViewController<AVPlayer_PlusDelegate, AVPlayer_ResourceLoaderDelegate>
 
 /**
  拓展版的avplayer播放器，支持播放控制(播放、暂停、上下首、循环模式等)、播放进度监听等。
  */
 @property (strong, nonatomic) AVPlayer_Plus *player;
 
+/**
+ avplayer数据流加载对象
+ */
 @property (strong, nonatomic) AVPlayer_ResourceLoader *resourceLoader;
 
 - (void)player:(AVPlayer_Plus *)player willPlayUrl:(NSURL *)music_url withResponse:(void (^)(AVURLAsset *asset, NSURL *fileUrl))response;//当子类需要在音乐切换时做操作时，如：更新播放列表ui，可重写此方法，记得先调用[super player:willPlayUrl:withResponse:]
+
+
 
 @end

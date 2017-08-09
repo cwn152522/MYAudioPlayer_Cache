@@ -9,7 +9,7 @@
 #import <UIKit/UIKit.h>
 #import "MYVisualEffectView.h"
 #import "MusicModel.h"
-#import "AVPlayer_Define.h"
+#import "AVPlayer_Plus/AVPlayer_Plus.h"
 @class AVPlayer_PlayListViewController;
 @protocol AVPlayer_PlayListDelegate;
 
