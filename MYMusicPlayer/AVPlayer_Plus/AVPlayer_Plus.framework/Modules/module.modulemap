@@ -1,0 +1,6 @@
+framework module AVPlayer_Plus {
+  umbrella header "AVPlayer_Plus.h"
+
+  export *
+  module * { export * }
+}
