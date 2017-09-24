@@ -17,6 +17,9 @@
 - (void)dealloc{
     [[NSNotificationCenter defaultCenter] removeObserver:self];
     [self removeObserver:self forKeyPath:@"status"];
+    [self.currentItem removeObserver:self forKeyPath:@"playbackBufferEmpty"];
+    [self.currentItem removeObserver:self forKeyPath:@"playbackLikelyToKeepUp"];
+    [self.currentItem removeObserver:self forKeyPath:@"loadedTimeRanges"];
 }
 
 
@@ -38,6 +41,7 @@
         
         //增加观测者,播放状态切换时处理
         [self addObserver:self forKeyPath:@"status" options:NSKeyValueObservingOptionNew context:nil];
+        
         
         //接收音频源改变监听事件，比如更换了输出源，由耳机播放拔掉耳机后，应该把音乐暂停(参照酷狗应用)
         [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(routeChange:) name:AVAudioSessionRouteChangeNotification object:nil];
@@ -87,6 +91,11 @@
         if(self.currentItem != nil){
             [super play];
             _playing = YES;
+            
+            [self.currentItem addObserver:self forKeyPath:@"playbackBufferEmpty" options:NSKeyValueObservingOptionNew context:nil];
+            [self.currentItem addObserver:self forKeyPath:@"playbackLikelyToKeepUp" options:NSKeyValueObservingOptionNew context:nil];
+            [self.currentItem addObserver:self forKeyPath:@"loadedTimeRanges" options:NSKeyValueObservingOptionNew context:nil];
+            
             if([_delegate respondsToSelector:@selector(player:playingSateDidChanged:)]){
                 [_delegate player:self playingSateDidChanged:YES];
             }
@@ -240,6 +249,22 @@
         if([self.delegate respondsToSelector:@selector(player:playerSateDidChanged:)]){
             [self.delegate player:self playerSateDidChanged:self.status];
         }
+    } else if ([keyPath isEqualToString:@"playbackBufferEmpty"]) { //监听播放器在缓冲数据的状态
+        
+        NSLog(@"缓冲不足暂停了");
+        
+        
+    } else if ([keyPath isEqualToString:@"playbackLikelyToKeepUp"]) {
+        
+        NSLog(@"缓冲达到可播放程度了");
+        
+        //由于 AVPlayer 缓存不足就会自动暂停，所以缓存充足了需要手动播放，才能继续播放
+        [self play];
+
+    }else if ([keyPath isEqualToString:@"loadedTimeRanges"]) {  //监听播放器的下载进度
+        
+        [self calculateDownloadProgress:self.currentItem];
+        
     }
 }
 
@@ -257,6 +282,19 @@
         NSAssert(1 < 0, @"warm：注意，后台任务没有开启！！！\n请在info.plist文件中添加Required background modes数组，新增一项App plays audio or streams audio/video using AirPlay字符串");
         return;
     }
+}
+
+- (void)calculateDownloadProgress:(AVPlayerItem *)playerItem
+{
+    NSArray *loadedTimeRanges = [playerItem loadedTimeRanges];
+    CMTimeRange timeRange = [loadedTimeRanges.firstObject CMTimeRangeValue];// 获取最近一个缓冲区域
+    float startSeconds = CMTimeGetSeconds(timeRange.start);
+    float durationSeconds = CMTimeGetSeconds(timeRange.duration);
+    NSTimeInterval timeInterval = startSeconds + durationSeconds;// 计算缓冲总进度
+    CMTime duration = playerItem.duration;
+    CGFloat totalDuration = CMTimeGetSeconds(duration);
+//    self.loadedProgress = timeInterval / totalDuration;
+//    [self.videoProgressView setProgress:timeInterval / totalDuration animated:YES];
 }
 
 - (void)audioSessionInterrupted:(NSNotification *)notification{

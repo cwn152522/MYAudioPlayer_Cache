@@ -17,7 +17,8 @@
     if([manager fileExistsAtPath:path]){//存在临时文件，删除旧的
         [manager removeItemAtPath:path error:nil];
     }
-    return [manager createFileAtPath:path contents:nil attributes:nil];
+    BOOL flag = [manager createFileAtPath:path contents:nil attributes:nil];
+    return flag;
 }
 
 + (void)writeTempFileData:(NSData *)data{

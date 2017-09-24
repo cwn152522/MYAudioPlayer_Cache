@@ -22,10 +22,16 @@
 - (void)viewDidLoad {
     [super viewDidLoad];
     self.player.playListArray = @[
-                                      [NSURL URLWithString:@"http://fjdx.sc.chinaz.com/Files/DownLoad/sound1/201707/8927.mp3"],
+//                                      [NSURL URLWithString:@"http://fjdx.sc.chinaz.com/Files/DownLoad/sound1/201707/8927.mp3"],
+                                      [NSURL URLWithString:[@"http://192.168.1.116:8888/演员.mp3"stringByAddingPercentEncodingWithAllowedCharacters:[NSCharacterSet URLQueryAllowedCharacterSet]]],
                                       [NSURL URLWithString:@"http://fjdx.sc.chinaz.com/Files/DownLoad/sound1/201707/8930.mp3"],
                                       [NSURL URLWithString:@"http://download.lingyongqian.cn/music/AdagioSostenuto.mp3"],
                                   ];//设置播放列表
+    
+    
+    [self.sliderBar addTarget:self action:@selector(onSliderTouchedUp) forControlEvents:UIControlEventTouchUpInside];
+    [self.sliderBar addTarget:self action:@selector(onSliderTouchedUp) forControlEvents:UIControlEventTouchUpOutside];
+    [self.sliderBar addTarget:self action:@selector(onSliderTouchedDown) forControlEvents:UIControlEventTouchDown];
     // Do any additional setup after loading the view, typically from a nib.
 }
 
@@ -105,8 +111,14 @@
 }
 
 - (IBAction)onSliderValueChanged:(UISlider *)sender {
+        [self.player seekToProgress:sender.value];
+}
+- (void)onSliderTouchedDown{
+    [self.player pause];
+}
+- (void)onSliderTouchedUp{
     self.resourceLoader.seekRequired = YES;
-    [self.player seekToProgress:sender.value];
+    [self.player play];
 }
 
 - (void)updateLockedScreenMusic{

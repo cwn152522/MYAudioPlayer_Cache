@@ -65,21 +65,24 @@
 #pragma mark - LoadingRequest事件处理
 - (void)addLoadingRequest:(AVAssetResourceLoadingRequest *)loadingRequest {
     //TODO: 新增缓冲任务
-    [self.requestList addObject:loadingRequest];
     @synchronized(self) {
-        if (self.requestTask) {//说明拖拽过
+        if (self.requestTask) {//说明非第一次请求
             if (loadingRequest.dataRequest.requestedOffset >= self.requestTask.requestOffset &&
                 loadingRequest.dataRequest.requestedOffset <= self.requestTask.requestOffset + self.requestTask.responseCacheLength) {
                 //新请求的起始位置大于上一个请求的起始位置，并且小于上一个请求已经返回的数据位置，说明当前待播放点的数据已经缓存，则直接完成
-                NSLog(@"已有缓存数据可供avplayer使用");
+                NSLog(@"已有部分缓存数据可供avplayer使用");
+                 [self.requestList addObject:loadingRequest];
                 [self processRequestList];
             }else {//数据还没缓存，则等待数据下载；如果是Seek操作，则重新请求
+                NSLog(@"没有缓存数据可供avplayer使用");
                 if (self.seekRequired == YES) {//请求期间用户进行了拖拽
                     NSLog(@"拖拽操作，则重新请求");
+                     [self.requestList addObject:loadingRequest];
                     [self newTaskWithLoadingRequest:loadingRequest cache:NO];//因为拖拽后会从结束点开始缓存，也就是说，之前未完成的缓存不需要了，还有因为拖拽了，肯定不能缓存整首，所以没必要进行本地化
                 }
             }
         }else {
+             [self.requestList addObject:loadingRequest];
             [self newTaskWithLoadingRequest:loadingRequest cache:YES];//第一次缓存，肯定是刚点了某一首音乐，我们开始缓存，并且需要本地化
         }
     }
@@ -98,42 +101,84 @@
     self.requestTask.requestURL = loadingRequest.request.URL;
     self.requestTask.requestOffset = loadingRequest.dataRequest.requestedOffset;
     self.requestTask.canCache = cacheable;
+    
     if (fileLength > 0) {
         self.requestTask.fileLength = fileLength;
     }
+    
     self.requestTask.delegate = self;
     [self.requestTask start];
     self.seekRequired = NO;
 }
 
 - (void)processRequestList {//将缓存数据提交给avplayer进行播放
-    NSMutableArray * finishRequestList = [NSMutableArray array];
-    for (AVAssetResourceLoadingRequest * loadingRequest in self.requestList) {
-        if ([self ifLoadingRequestLoadingFinished:loadingRequest]) {//判断任务是否全部缓存结束，如果结束就从任务列表中移除
-            [finishRequestList addObject:loadingRequest];
+    @synchronized (self) {
+        NSMutableArray * finishRequestList = [NSMutableArray array];
+        for (AVAssetResourceLoadingRequest * loadingRequest in self.requestList) {
+            if(loadingRequest.isFinished == YES)
+                [finishRequestList addObject:loadingRequest];
+            else{
+                [self fillInContentInformation:loadingRequest.contentInformationRequest]; //对每次请求加上长度，文件类型等信息
+                if ([self ifLoadingRequestLoadingFinished:loadingRequest]) {//判断任务是否全部缓存结束，如果结束就从任务列表中移除
+                    [finishRequestList addObject:loadingRequest];
+                }
+            }
         }
+        NSLog(@"当前任务数:%ld", [self.requestList count]);
+        [self.requestList removeObjectsInArray:finishRequestList];
     }
-    [self.requestList removeObjectsInArray:finishRequestList];
+}
+
+- (void)fillInContentInformation:(AVAssetResourceLoadingContentInformationRequest *)contentInformationRequest
+{
+    //填充信息
+    CFStringRef contentType = UTTypeCreatePreferredIdentifierForTag(kUTTagClassMIMEType, (__bridge CFStringRef)(@"video/mp3"), NULL);
+    contentInformationRequest.contentType = CFBridgingRelease(contentType);
+    contentInformationRequest.byteRangeAccessSupported = YES;
+    contentInformationRequest.contentLength = self.requestTask.fileLength;
 }
 
 - (BOOL)ifLoadingRequestLoadingFinished:(AVAssetResourceLoadingRequest *)loadingRequest {
     //填充信息
-    CFStringRef contentType = UTTypeCreatePreferredIdentifierForTag(kUTTagClassMIMEType, (__bridge CFStringRef)(@"audio/mp3"), NULL);
-    loadingRequest.contentInformationRequest.contentType = CFBridgingRelease(contentType);
-    loadingRequest.contentInformationRequest.byteRangeAccessSupported = YES;
-    loadingRequest.contentInformationRequest.contentLength = self.requestTask.fileLength;
+//    CFStringRef contentType = UTTypeCreatePreferredIdentifierForTag(kUTTagClassMIMEType, (__bridge CFStringRef)(@"video/mp3"), NULL);
+//    loadingRequest.contentInformationRequest.contentType = CFBridgingRelease(contentType);
+//    loadingRequest.contentInformationRequest.byteRangeAccessSupported = YES;
+//    loadingRequest.contentInformationRequest.contentLength = self.requestTask.fileLength;
+//    
+//    
+//    //读文件，填充数据
+//    long long cacheLength = self.requestTask.responseCacheLength;//请求已缓存的数据大小
+//    long long  requestedOffset = loadingRequest.dataRequest.requestedOffset;//请求的文件数据开始位置
+//    if (loadingRequest.dataRequest.currentOffset != 0) {//当前位置不为0
+//        requestedOffset = loadingRequest.dataRequest.currentOffset;//更新请求的起始位置
+//    }
+//    
+//    
+//    if(requestedOffset < self.requestTask.requestOffset || requestedOffset > self.requestTask.requestOffset + cacheLength){//不在范围内
+//        return NO;
+//    }
+//    
+//    long long  canReadLength = cacheLength - (requestedOffset - self.requestTask.requestOffset);// 已缓存长度-(播放器待读起始位置 - 缓存其实位置) = 实际可读的长度
+//    long long  respondLength = MIN(canReadLength, loadingRequest.dataRequest.requestedLength);//即给播放器的数据最多只能是canReadLength。如果播放器要的少了，就把我缓存好的她要的分给他；要是要多了，那没办法，我把全部缓存好的给你就是了，你凑合用吧，不够的时候我再去请求。
     
     //读文件，填充数据
-    NSUInteger cacheLength = self.requestTask.responseCacheLength;//请求已缓存的数据大小
-    NSUInteger requestedOffset = loadingRequest.dataRequest.requestedOffset;//请求的文件数据开始位置
-    if (loadingRequest.dataRequest.currentOffset != 0) {//当前位置不为0
-        requestedOffset = loadingRequest.dataRequest.currentOffset;//更新请求的起始位置
+    NSUInteger cacheLength = self.requestTask.responseCacheLength;
+    NSUInteger requestedOffset = loadingRequest.dataRequest.requestedOffset;
+    if (loadingRequest.dataRequest.currentOffset != 0) {
+        requestedOffset = loadingRequest.dataRequest.currentOffset;
     }
-    NSUInteger canReadLength = cacheLength - (requestedOffset - self.requestTask.requestOffset);
+    
+    if(requestedOffset < self.requestTask.requestOffset || requestedOffset > self.requestTask.requestOffset + cacheLength){
+//        [self addLoadingRequest:loadingRequest];
+        return NO;
+    }
+
+    NSUInteger  offset = requestedOffset - self.requestTask.requestOffset;
+    NSUInteger canReadLength = cacheLength - offset;
     NSUInteger respondLength = MIN(canReadLength, loadingRequest.dataRequest.requestedLength);
     
-    
-    [loadingRequest.dataRequest respondWithData:[AVPlayer_CacheFileHandler readTempFileDataWithOffset:requestedOffset - self.requestTask.requestOffset length:respondLength]];
+    NSData *data = [AVPlayer_CacheFileHandler readTempFileDataWithOffset:offset length:respondLength];
+    [loadingRequest.dataRequest respondWithData:data];
     
     //如果完全响应了所需要的数据，则完成
     NSUInteger nowendOffset = requestedOffset + canReadLength;

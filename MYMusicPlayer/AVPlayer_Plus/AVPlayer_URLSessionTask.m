@@ -19,6 +19,9 @@
 
 @implementation AVPlayer_URLSessionTask
 
+- (void)dealloc{
+}
+
 - (instancetype)init{
     if(self = [super init]){
         [AVPlayer_CacheFileHandler createTempFile];
@@ -33,7 +36,7 @@
     NSMutableURLRequest * request = [NSMutableURLRequest requestWithURL:[self.requestURL originalSchemeURL] cachePolicy:NSURLRequestReloadIgnoringCacheData timeoutInterval:10.0];
     
     if (self.requestOffset > 0) {//http头部下载指定范围
-        [request addValue:[NSString stringWithFormat:@"bytes=%ld-%ld", self.requestOffset, self.fileLength - 1] forHTTPHeaderField:@"Range"];
+        [request addValue:[NSString stringWithFormat:@"bytes=%ld-%ld", self.requestOffset, self.fileLength] forHTTPHeaderField:@"Range"];
     }
     
     self.session = [NSURLSession sessionWithConfiguration:[NSURLSessionConfiguration defaultSessionConfiguration] delegate:self delegateQueue:[NSOperationQueue mainQueue]];
@@ -46,6 +49,12 @@
     _didCancelled = YES;
     [self.task cancel];
     [self.session invalidateAndCancel];
+    [self.task cancel];
+    self.task = nil;
+    self.delegate = nil;
+    [AVPlayer_CacheFileHandler createTempFile];
+    self.requestOffset = -1;
+    self.fileLength = 0;
 }
 
 #pragma mark - NSURLSessionDataDelegate
@@ -57,9 +66,12 @@
 
     completionHandler(NSURLSessionResponseAllow);
     NSHTTPURLResponse * httpResponse = (NSHTTPURLResponse *)response;
-    NSString * contentRange = [[httpResponse allHeaderFields] objectForKey:@"Content-Range"];
-    NSString * fileLength = [[contentRange componentsSeparatedByString:@"/"] lastObject];
-    self.fileLength = fileLength.integerValue > 0 ? fileLength.integerValue : response.expectedContentLength;
+    if(httpResponse.statusCode == 206){
+        NSString * contentRange = [[httpResponse allHeaderFields] objectForKey:@"Content-Range"];
+        NSString * fileLength = [[contentRange componentsSeparatedByString:@"/"] lastObject];
+        self.fileLength = fileLength.integerValue ;
+    }else if(httpResponse.statusCode == 200)
+        self.fileLength =  response.expectedContentLength;
 }
 
 - (void)URLSession:(NSURLSession *)session dataTask:(NSURLSessionDataTask *)dataTask didReceiveData:(NSData *)data{
@@ -69,7 +81,7 @@
     
     [AVPlayer_CacheFileHandler writeTempFileData:data];//将data写入文本
     self.responseCacheLength += data.length;
-    NSLog(@"总字节数：%ld, 已缓存字节数：%ld，偏移量：%ld", self.responseCacheLength, self.fileLength, self.requestOffset);
+    NSLog(@"总字节数：%ld, 已缓存字节数：%ld，偏移量：%ld", self.fileLength,  self.responseCacheLength, self.requestOffset);
     if (self.delegate && [self.delegate respondsToSelector:@selector(sessionTask:didUpdataPartOfCacheDatas:)]) {
         [self.delegate sessionTask:self didUpdataPartOfCacheDatas:[AVPlayer_CachePreference sharedPreference].tmpFilePath];
     }
