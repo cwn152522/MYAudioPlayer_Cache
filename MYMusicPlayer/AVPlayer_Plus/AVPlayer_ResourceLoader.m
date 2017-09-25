@@ -46,7 +46,7 @@
 #pragma mark -AVPlayer_URLSessionTaskDelegate
 - (void)sessionTask:(AVPlayer_URLSessionTask *)task didUpdataPartOfCacheDatas:(NSString *)tmpFilePath{
     //TODO: 请求任务已经更新了部分cache数据后事件处理
-    [self processRequestList];//返回数据给avplayer进行播放
+        [self processRequestList];//返回数据给avplayer进行播放
     if (self.delegate && [self.delegate respondsToSelector:@selector(loader:cacheProgress:)]) {
         CGFloat cacheProgress = (CGFloat)self.requestTask.responseCacheLength / (self.requestTask.fileLength - self.requestTask.requestOffset);
         [self.delegate loader:self cacheProgress:cacheProgress];//将缓存的进度传递出去
@@ -80,6 +80,10 @@
                      [self.requestList addObject:loadingRequest];
                     [self newTaskWithLoadingRequest:loadingRequest cache:NO];//因为拖拽后会从结束点开始缓存，也就是说，之前未完成的缓存不需要了，还有因为拖拽了，肯定不能缓存整首，所以没必要进行本地化
                 }
+//                else{
+//                    [self.requestList addObject:loadingRequest];
+//                    NSLog(@"fadsfafafa");
+//                }
             }
         }else {
              [self.requestList addObject:loadingRequest];
@@ -99,6 +103,7 @@
     //重新创建一个请求任务
     self.requestTask = [[AVPlayer_URLSessionTask alloc]init];
     self.requestTask.requestURL = loadingRequest.request.URL;
+    self.requestTask.requestLength = loadingRequest.dataRequest.requestedLength;
     self.requestTask.requestOffset = loadingRequest.dataRequest.requestedOffset;
     self.requestTask.canCache = cacheable;
     
@@ -115,14 +120,10 @@
     @synchronized (self) {
         NSMutableArray * finishRequestList = [NSMutableArray array];
         for (AVAssetResourceLoadingRequest * loadingRequest in self.requestList) {
-            if(loadingRequest.isFinished == YES)
-                [finishRequestList addObject:loadingRequest];
-            else{
                 [self fillInContentInformation:loadingRequest.contentInformationRequest]; //对每次请求加上长度，文件类型等信息
                 if ([self ifLoadingRequestLoadingFinished:loadingRequest]) {//判断任务是否全部缓存结束，如果结束就从任务列表中移除
                     [finishRequestList addObject:loadingRequest];
                 }
-            }
         }
         NSLog(@"当前任务数:%ld", [self.requestList count]);
         [self.requestList removeObjectsInArray:finishRequestList];
@@ -138,29 +139,7 @@
     contentInformationRequest.contentLength = self.requestTask.fileLength;
 }
 
-- (BOOL)ifLoadingRequestLoadingFinished:(AVAssetResourceLoadingRequest *)loadingRequest {
-    //填充信息
-//    CFStringRef contentType = UTTypeCreatePreferredIdentifierForTag(kUTTagClassMIMEType, (__bridge CFStringRef)(@"video/mp3"), NULL);
-//    loadingRequest.contentInformationRequest.contentType = CFBridgingRelease(contentType);
-//    loadingRequest.contentInformationRequest.byteRangeAccessSupported = YES;
-//    loadingRequest.contentInformationRequest.contentLength = self.requestTask.fileLength;
-//    
-//    
-//    //读文件，填充数据
-//    long long cacheLength = self.requestTask.responseCacheLength;//请求已缓存的数据大小
-//    long long  requestedOffset = loadingRequest.dataRequest.requestedOffset;//请求的文件数据开始位置
-//    if (loadingRequest.dataRequest.currentOffset != 0) {//当前位置不为0
-//        requestedOffset = loadingRequest.dataRequest.currentOffset;//更新请求的起始位置
-//    }
-//    
-//    
-//    if(requestedOffset < self.requestTask.requestOffset || requestedOffset > self.requestTask.requestOffset + cacheLength){//不在范围内
-//        return NO;
-//    }
-//    
-//    long long  canReadLength = cacheLength - (requestedOffset - self.requestTask.requestOffset);// 已缓存长度-(播放器待读起始位置 - 缓存其实位置) = 实际可读的长度
-//    long long  respondLength = MIN(canReadLength, loadingRequest.dataRequest.requestedLength);//即给播放器的数据最多只能是canReadLength。如果播放器要的少了，就把我缓存好的她要的分给他；要是要多了，那没办法，我把全部缓存好的给你就是了，你凑合用吧，不够的时候我再去请求。
-    
+- (BOOL)ifLoadingRequestLoadingFinished:(AVAssetResourceLoadingRequest *)loadingRequest {    
     //读文件，填充数据
     NSUInteger cacheLength = self.requestTask.responseCacheLength;
     NSUInteger requestedOffset = loadingRequest.dataRequest.requestedOffset;
@@ -169,7 +148,8 @@
     }
     
     if(requestedOffset < self.requestTask.requestOffset || requestedOffset > self.requestTask.requestOffset + cacheLength){
-//        [self addLoadingRequest:loadingRequest];
+//        if([self.requestList count] == 1)
+//            [self newTaskWithLoadingRequest:loadingRequest cache:NO];
         return NO;
     }
 
@@ -191,7 +171,9 @@
 }
 
 - (void)removeLoadingRequest:(AVAssetResourceLoadingRequest *)loadingRequest {
-    [self.requestList removeObject:loadingRequest];
+    if(loadingRequest.isCancelled == YES)
+        [self.requestList removeObject:loadingRequest];
+    NSLog(@"----当前任务数:%ld", [self.requestList count]);
 }
 
 

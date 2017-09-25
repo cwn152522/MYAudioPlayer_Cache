@@ -29,6 +29,7 @@
 
 @property (strong, nonatomic) NSURL * requestURL; //请求音频的url
 @property (assign, nonatomic) NSUInteger requestOffset; //请求缓冲的起始位置(比如拖拽到0.5进度的字节位置)，那就应该从那个地方开始缓存
+@property (nonatomic, assign) NSUInteger requestLength; //待缓存长度
 @property (assign, nonatomic) NSUInteger responseCacheLength; //已缓冲的长度
 @property (nonatomic, assign) NSUInteger fileLength; //待缓存音频文件的总长度
 @property (nonatomic, assign) BOOL canCache; //是否允许缓存文件

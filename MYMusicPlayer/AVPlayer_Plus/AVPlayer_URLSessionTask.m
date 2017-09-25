@@ -20,6 +20,7 @@
 @implementation AVPlayer_URLSessionTask
 
 - (void)dealloc{
+        self.delegate = nil;
 }
 
 - (instancetype)init{
@@ -36,7 +37,7 @@
     NSMutableURLRequest * request = [NSMutableURLRequest requestWithURL:[self.requestURL originalSchemeURL] cachePolicy:NSURLRequestReloadIgnoringCacheData timeoutInterval:10.0];
     
     if (self.requestOffset > 0) {//http头部下载指定范围
-        [request addValue:[NSString stringWithFormat:@"bytes=%ld-%ld", self.requestOffset, self.fileLength] forHTTPHeaderField:@"Range"];
+        [request addValue:[NSString stringWithFormat:@"bytes=%ld-%ld", self.requestOffset, self.requestOffset + self.requestLength] forHTTPHeaderField:@"Range"];
     }
     
     self.session = [NSURLSession sessionWithConfiguration:[NSURLSessionConfiguration defaultSessionConfiguration] delegate:self delegateQueue:[NSOperationQueue mainQueue]];
@@ -54,6 +55,7 @@
     self.delegate = nil;
     [AVPlayer_CacheFileHandler createTempFile];
     self.requestOffset = -1;
+    self.requestLength = 0;
     self.fileLength = 0;
 }
 
