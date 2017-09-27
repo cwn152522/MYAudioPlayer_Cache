@@ -25,10 +25,9 @@
 @end
 
 
-@interface AVPlayer_ResourceLoader : NSObject<AVAssetResourceLoaderDelegate, AVPlayer_URLSessionTaskDelegate>
+@interface AVPlayer_ResourceLoader : NSObject<AVPlayer_URLSessionTaskDelegate>
 
 @property (nonatomic, weak) id<AVPlayer_ResourceLoaderDelegate> delegate;
-@property (atomic, assign) BOOL seekRequired; //Seek标识，如果用户拖拽过，设为yes
 @property (atomic, assign) BOOL cacheFinished;//缓存结束
 
 /**

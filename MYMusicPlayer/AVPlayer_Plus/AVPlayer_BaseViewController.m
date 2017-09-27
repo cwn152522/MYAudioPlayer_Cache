@@ -78,9 +78,6 @@
             response(nil, fileUrl);
         }else{//无本地缓存
             self.resourceLoader = [[AVPlayer_ResourceLoader alloc]init];
-            //            self.resourceLoader.delegate = self;
-            //            AVURLAsset * asset = [AVURLAsset URLAssetWithURL:[music_url customSchemeURL] options:nil];
-            //            [asset.resourceLoader setDelegate:self.resourceLoader queue:dispatch_get_main_queue()];
             response(nil, music_url);
             [self.resourceLoader cacheUrl:music_url];//开始缓存
         }
@@ -88,10 +85,6 @@
         response(nil, nil);
     }
 }
-
-//#pragma mark - AVPlayer_ResourceLoaderDelegate
-
-
 
 /*
 #pragma mark - Navigation
