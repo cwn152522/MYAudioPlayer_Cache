@@ -37,7 +37,7 @@
     NSMutableURLRequest * request = [NSMutableURLRequest requestWithURL:[self.requestURL originalSchemeURL] cachePolicy:NSURLRequestReloadIgnoringCacheData timeoutInterval:10.0];
     
     if (self.requestOffset > 0) {//http头部下载指定范围
-        [request addValue:[NSString stringWithFormat:@"bytes=%ld-%ld", self.requestOffset, self.requestOffset + self.requestLength] forHTTPHeaderField:@"Range"];
+        [request addValue:[NSString stringWithFormat:@"bytes=%ld-%ld", self.requestOffset, self.requestOffset + self.requestLength - 1] forHTTPHeaderField:@"Range"];
     }
     
     self.session = [NSURLSession sessionWithConfiguration:[NSURLSessionConfiguration defaultSessionConfiguration] delegate:self delegateQueue:[NSOperationQueue mainQueue]];
@@ -100,8 +100,10 @@
             }
         }else {//请求成功
             if (self.canCache == YES) {//可以缓存，说明是整首音乐，将临时文件保存到缓存目录
-                NSString *fileName = [[self.requestURL.absoluteString componentsSeparatedByString:@"/"] lastObject];
-                [AVPlayer_CacheFileHandler saveTempFileIntoCacheFolderWithFileName:fileName];
+                if(self.responseCacheLength == self.fileLength){
+                    NSString *fileName = [[self.requestURL.absoluteString componentsSeparatedByString:@"/"] lastObject];
+                    [AVPlayer_CacheFileHandler saveTempFileIntoCacheFolderWithFileName:fileName];
+                }
             }
             
             if (self.delegate && [self.delegate respondsToSelector:@selector(sessionTask:completedSuccessfully:)]) {//不管缓存的是不是整首，都得通知出去

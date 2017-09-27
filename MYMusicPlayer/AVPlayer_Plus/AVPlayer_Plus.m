@@ -252,7 +252,9 @@
     } else if ([keyPath isEqualToString:@"playbackBufferEmpty"]) { //监听播放器在缓冲数据的状态
         
         NSLog(@"缓冲不足暂停了");
-        
+        dispatch_after(dispatch_time(DISPATCH_TIME_NOW, (int64_t)(2.0f * NSEC_PER_SEC)), dispatch_get_main_queue(), ^{
+            [self play];
+        });
         
     } else if ([keyPath isEqualToString:@"playbackLikelyToKeepUp"]) {
         

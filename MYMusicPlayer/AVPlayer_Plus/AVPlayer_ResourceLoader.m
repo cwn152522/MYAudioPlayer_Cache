@@ -75,14 +75,13 @@
                 [self processRequestList];
             }else {//数据还没缓存，则等待数据下载；如果是Seek操作，则重新请求
                 NSLog(@"没有缓存数据可供avplayer使用");
-                if (self.seekRequired == YES) {//请求期间用户进行了拖拽
+//                if (self.seekRequired == YES) {//请求期间用户进行了拖拽
+                [self.requestList enumerateObjectsUsingBlock:^(AVAssetResourceLoadingRequest *obj, NSUInteger idx, BOOL * _Nonnull stop) {
+                    [obj finishLoadingWithError:nil];
+                }];
                     NSLog(@"拖拽操作，则重新请求");
                      [self.requestList addObject:loadingRequest];
                     [self newTaskWithLoadingRequest:loadingRequest cache:NO];//因为拖拽后会从结束点开始缓存，也就是说，之前未完成的缓存不需要了，还有因为拖拽了，肯定不能缓存整首，所以没必要进行本地化
-                }
-//                else{
-//                    [self.requestList addObject:loadingRequest];
-//                    NSLog(@"fadsfafafa");
 //                }
             }
         }else {
@@ -148,8 +147,6 @@
     }
     
     if(requestedOffset < self.requestTask.requestOffset || requestedOffset > self.requestTask.requestOffset + cacheLength){
-//        if([self.requestList count] == 1)
-//            [self newTaskWithLoadingRequest:loadingRequest cache:NO];
         return NO;
     }
 
@@ -173,7 +170,6 @@
 - (void)removeLoadingRequest:(AVAssetResourceLoadingRequest *)loadingRequest {
     if(loadingRequest.isCancelled == YES)
         [self.requestList removeObject:loadingRequest];
-    NSLog(@"----当前任务数:%ld", [self.requestList count]);
 }
 
 
