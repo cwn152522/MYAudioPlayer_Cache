@@ -19,14 +19,14 @@
 
  @return 创建是否成功
  */
-+ (BOOL)createTempFile;
++ (BOOL)createTempFileForUrl:(NSString *)url;
 
 /**
  往临时文件写入数据
 
  @param data 已经缓存到了的数据
  */
-+ (void)writeTempFileData:(NSData *)data;
++ (void)writeTempFileData:(NSData *)data forUrl:(NSString *)url;
 
 /**
  从临时文件中读取某段缓冲数据
@@ -34,7 +34,7 @@
  @param offset 缓冲数据起始点
  @param length 缓冲数据目标长度
  */
-+ (NSData *)readTempFileDataWithOffset:(NSUInteger)offset length:(NSUInteger)length;
++ (NSData *)readTempFileDataWithOffset:(NSUInteger)offset length:(NSUInteger)length forUrl:(NSString *)url;
 
 /**
  保存临时文件到缓存文件夹
@@ -42,7 +42,7 @@
  @param fileName 待保存音频文件名
  @return 保存音频文件是否成功 
  */
-+ (BOOL)saveTempFileIntoCacheFolderWithFileName:(NSString *)fileName;
++ (BOOL)saveTempFileIntoCacheFolderWithFileName:(NSString *)fileName forUrl:(NSString *)url;
 
 /**
  判断指定音频url是否存在相应缓存文件

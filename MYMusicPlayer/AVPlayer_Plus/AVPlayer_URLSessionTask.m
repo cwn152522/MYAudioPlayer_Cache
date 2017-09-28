@@ -23,9 +23,9 @@
         self.delegate = nil;
 }
 
-- (instancetype)init{
+- (instancetype)initWithUrl:(NSString *)url{
     if(self = [super init]){
-        [AVPlayer_CacheFileHandler createTempFile];
+        [AVPlayer_CacheFileHandler createTempFileForUrl:url];
     }
     return self;
 }
@@ -53,7 +53,7 @@
     [self.task cancel];
     self.task = nil;
     self.delegate = nil;
-    [AVPlayer_CacheFileHandler createTempFile];
+//    [AVPlayer_CacheFileHandler createTempFileForUrl:self.requestURL.absoluteString];
     self.requestOffset = -1;
     self.requestLength = 0;
     self.fileLength = 0;
@@ -81,7 +81,7 @@
     if (self.didCancelled == YES)
         return;
     
-    [AVPlayer_CacheFileHandler writeTempFileData:data];//将data写入文本
+    [AVPlayer_CacheFileHandler writeTempFileData:data forUrl:self.requestURL.absoluteString];//将data写入文本
     self.responseCacheLength += data.length;
     NSLog(@"总字节数：%ld, 已缓存字节数：%ld，偏移量：%ld", self.fileLength,  self.responseCacheLength, self.requestOffset);
     if (self.delegate && [self.delegate respondsToSelector:@selector(sessionTask:didUpdataPartOfCacheDatas:)]) {
@@ -102,7 +102,7 @@
             if (self.canCache == YES) {//可以缓存，说明是整首音乐，将临时文件保存到缓存目录
                 if(self.responseCacheLength == self.fileLength){
                     NSString *fileName = [[self.requestURL.absoluteString componentsSeparatedByString:@"/"] lastObject];
-                    [AVPlayer_CacheFileHandler saveTempFileIntoCacheFolderWithFileName:fileName];
+                    [AVPlayer_CacheFileHandler saveTempFileIntoCacheFolderWithFileName:fileName forUrl:self.requestURL.absoluteString];
                 }
             }
             

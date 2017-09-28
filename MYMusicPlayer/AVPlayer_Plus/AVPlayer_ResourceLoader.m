@@ -100,7 +100,7 @@
     }
     
     //重新创建一个请求任务
-    self.requestTask = [[AVPlayer_URLSessionTask alloc]init];
+    self.requestTask = [[AVPlayer_URLSessionTask alloc]initWithUrl:loadingRequest.request.URL.absoluteString];
     self.requestTask.requestURL = loadingRequest.request.URL;
     self.requestTask.requestLength = loadingRequest.dataRequest.requestedLength;
     self.requestTask.requestOffset = loadingRequest.dataRequest.requestedOffset;
@@ -154,7 +154,7 @@
     NSUInteger canReadLength = cacheLength - offset;
     NSUInteger respondLength = MIN(canReadLength, loadingRequest.dataRequest.requestedLength);
     
-    NSData *data = [AVPlayer_CacheFileHandler readTempFileDataWithOffset:offset length:respondLength];
+    NSData *data = [AVPlayer_CacheFileHandler readTempFileDataWithOffset:offset length:respondLength forUrl:loadingRequest.request.URL.absoluteString];
     [loadingRequest.dataRequest respondWithData:data];
     
     //如果完全响应了所需要的数据，则完成

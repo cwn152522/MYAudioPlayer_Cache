@@ -14,7 +14,7 @@
 @interface AVPlayer_CachePreference : NSObject
 
 /**
- 正在缓存的音频文件路径，默认为/tmp/musicTemp.mp3
+ 正在缓存的音频文件路径，存放临时文件，默认为/tmp/MusicTmps
  */
 @property (strong, nonatomic, readonly) NSString *tmpFilePath;
 
@@ -39,6 +39,14 @@
  @return 指定网络地址下对应的本地音频路径
  */
 - (NSString *)getCacheFilePath:(NSString *)url;
+
+/**
+ 获取临时文件路径
+
+ @param url 音频文件网络地址
+ @return 指定音频文件下对应的临时文件路径
+ */
+- (NSString *)getTmpFilePath:(NSString *)url;
 
 @end
 

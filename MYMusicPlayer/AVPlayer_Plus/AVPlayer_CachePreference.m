@@ -13,7 +13,7 @@ static AVPlayer_CachePreference *instance;
 
 - (instancetype)init{
     if(self = [super init]){
-        _tmpFilePath = [NSTemporaryDirectory() stringByAppendingPathComponent:@"musicTemp.mp3"];
+        _tmpFilePath = [NSTemporaryDirectory() stringByAppendingPathComponent:@"MusicTmps"];
         _cacheFolderPath = [[NSSearchPathForDirectoriesInDomains(NSLibraryDirectory, NSUserDomainMask, YES) firstObject] stringByAppendingPathComponent:@"MusicCaches"];
     }
     return self;
@@ -39,6 +39,12 @@ static AVPlayer_CachePreference *instance;
     NSString *fileName = [[url componentsSeparatedByString:@"/"] lastObject];//从url获取音频的文件名
     NSString * cacheFilePath = [NSString stringWithFormat:@"%@/%@", [self cacheFolderPath], fileName];//得到本地文件路径
     return cacheFilePath;
+}
+
+- (NSString *)getTmpFilePath:(NSString *)url{
+    NSString *fileName = [[url componentsSeparatedByString:@"/"] lastObject];//从url获取音频的文件名
+    NSString * tmpFilePath = [NSString stringWithFormat:@"%@/%@", [self tmpFilePath], fileName];//得到本地临时文件路径
+    return tmpFilePath;
 }
 
 

@@ -34,6 +34,8 @@
 @property (nonatomic, assign) NSUInteger fileLength; //待缓存音频文件的总长度
 @property (nonatomic, assign) BOOL canCache; //是否允许缓存文件
 
+- (instancetype)initWithUrl:(NSString *)url;
+
 
 /**
  开始缓存任务
