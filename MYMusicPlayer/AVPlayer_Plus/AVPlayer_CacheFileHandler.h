@@ -59,4 +59,11 @@
  */
 + (BOOL)clearCaches;
 
+/**
+ 清除缓存所有文件
+ 
+ @return 清除缓存是否成功
+ */
++ (BOOL)clearTmps;
+
 @end

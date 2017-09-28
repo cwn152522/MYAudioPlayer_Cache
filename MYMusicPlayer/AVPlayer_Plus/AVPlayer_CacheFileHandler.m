@@ -65,7 +65,14 @@
 }
 
 + (BOOL)clearCaches{
+    //清理缓存文件夹
     NSString *cacheFolderPath = [AVPlayer_CachePreference sharedPreference].cacheFolderPath;
+    NSFileManager * manager = [NSFileManager defaultManager];
+    return [manager removeItemAtPath:cacheFolderPath error:nil];
+}
++ (BOOL)clearTmps{
+    //清理临时文件夹
+    NSString *cacheFolderPath = [AVPlayer_CachePreference sharedPreference].tmpFilePath;
     NSFileManager * manager = [NSFileManager defaultManager];
     return [manager removeItemAtPath:cacheFolderPath error:nil];
 }
